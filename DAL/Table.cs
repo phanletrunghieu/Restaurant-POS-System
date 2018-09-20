@@ -12,7 +12,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Table()
         {
-            Orders = new HashSet<Order>();
+            OrderTables = new HashSet<OrderTable>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -25,6 +25,6 @@ namespace DAL
         public virtual Area Area { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderTable> OrderTables { get; set; }
     }
 }

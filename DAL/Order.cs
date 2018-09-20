@@ -13,7 +13,7 @@ namespace DAL
         public Order()
         {
             OrderDetails = new HashSet<OrderDetail>();
-            Tables = new HashSet<Table>();
+            OrderTables = new HashSet<OrderTable>();
         }
 
         public int ID { get; set; }
@@ -61,6 +61,6 @@ namespace DAL
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table> Tables { get; set; }
+        public virtual ICollection<OrderTable> OrderTables { get; set; }
     }
 }

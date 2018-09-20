@@ -12,6 +12,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            EmployeeDepartments = new HashSet<EmployeeDepartment>();
             Orders = new HashSet<Order>();
         }
 
@@ -19,15 +20,14 @@ namespace DAL
 
         public string Name { get; set; }
 
-        [StringLength(1)]
+        [StringLength(20)]
         public string Username { get; set; }
 
-        [StringLength(1)]
+        [StringLength(32)]
         public string Password { get; set; }
 
-        public int? DepartmentID { get; set; }
-
-        public virtual Department Department { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
