@@ -16,7 +16,12 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Login loginForm = new Login();
+            DialogResult dr = loginForm.ShowDialog();
+            if(dr == DialogResult.OK)
+            {
+                Application.Run(new RestaurantSetup());
+            }
         }
     }
 }

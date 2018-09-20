@@ -16,6 +16,7 @@ namespace DAL
             Orders = new HashSet<Order>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public string Name { get; set; }

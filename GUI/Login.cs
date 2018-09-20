@@ -34,10 +34,21 @@ namespace GUI
                 {
                     throw new Exception("Login fail");
                 }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                this.btnLogin_Click(sender, null);
             }
         }
     }
