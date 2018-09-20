@@ -55,14 +55,14 @@
                     ID = 1,
                     Name = "Hiếu Đẹp Trai 1",
                     Username = "hieudeptrai1",
-                    Password = "d85969d8a3f9dfe24dc27ecd7546a912"
+                    Password = "$2a$10$PADs98/Fbia9zEOyFk3dQun96omhId5TyTIXP.JcE6w/oCCLZMvnG"
                 },
                 new Employee
                 {
                     ID = 2,
                     Name = "Hiếu Đẹp Trai 2",
                     Username = "hieudeptrai2",
-                    Password = "d85969d8a3f9dfe24dc27ecd7546a912"
+                    Password = "$2a$10$PADs98/Fbia9zEOyFk3dQun96omhId5TyTIXP.JcE6w/oCCLZMvnG"
                 }
             );
 
