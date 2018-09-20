@@ -15,6 +15,7 @@ namespace DAL
             OrderDetails = new HashSet<OrderDetail>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? MenuID { get; set; }

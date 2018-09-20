@@ -16,6 +16,7 @@ namespace DAL
             OrderTables = new HashSet<OrderTable>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public string InvoiceNo { get; set; }
