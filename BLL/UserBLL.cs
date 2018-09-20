@@ -8,14 +8,19 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class UserBLL
+    public class UserBLL
     {
-        MyDBContext model = new MyDBContext();
-
-        public void Login(string Username, string Pass)
+        public bool Login(string username, string pass)
         {
-            model.Areas.Add(new Area { Name = "xxxx" });
-            model.SaveChanges();
+            using (MyDBContext model = new MyDBContext())
+            {
+                Employee employee = model.Employees.Where(e => e.Username == username).FirstOrDefault();
+                if(employee == null)
+                {
+                    throw new Exception("Employee is not exist");
+                }
+                return BCrypt.Net.BCrypt.CheckPassword(pass, employee.Password); ;
+            }
         }
     }
 }

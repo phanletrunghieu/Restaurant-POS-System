@@ -23,7 +23,7 @@ namespace DAL
         [StringLength(20)]
         public string Username { get; set; }
 
-        [StringLength(32)]
+        [StringLength(60)]
         public string Password { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
