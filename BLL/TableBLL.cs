@@ -35,5 +35,15 @@ namespace BLL
                 model.SaveChanges();
             }
         }
+
+        public void Delete(Table table)
+        {
+            using (MyDBContext model = new MyDBContext())
+            {
+                model.Tables.Attach(table);
+                model.Tables.Remove(table);
+                model.SaveChanges();
+            }
+        }
     }
 }
