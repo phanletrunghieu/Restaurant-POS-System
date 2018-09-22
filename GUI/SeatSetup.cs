@@ -46,7 +46,8 @@ namespace GUI
                 List<Table> listTable = tableBLL.ListTablesByArea(area);
                 for (int i = 0; i < listTable.Count; i++)
                 {
-                    var tt = new TableControl(listTable[i].Name);
+                    var tt = new TableControl(listTable[i]);
+                    tt.OnDelete += new TableControl.OnDeleteHandler(this.tableControl_OnDelete);
                     t.Controls.Add(tt);
                 }
 
@@ -67,7 +68,7 @@ namespace GUI
 
             for(int i = 0; i < this.tabPages.Count; i++)
             {
-                Control.ControlCollection controls = this.tabPages[i].Controls;
+                List<TableControl> controls = this.tabPages[i].Controls.OfType<TableControl>().ToList();
 
                 int cols = (this.tabPages[i].Width - minPadding) / (tableWidth + minPadding);
                 int rows = (this.tabPages[i].Height - minPadding) / (tableHeight + minPadding);
@@ -75,7 +76,7 @@ namespace GUI
                 // calculate paddingHorizontal
                 int containerWidth = (tableWidth + minPadding) * Math.Min(cols, controls.Count) - minPadding;
                 int paddingHorizontal = (this.tabPages[i].Width - containerWidth) / 2;
-
+                
                 for (int j = 0; j < controls.Count; j++)
                 {
                     int x = j % cols;
@@ -117,6 +118,16 @@ namespace GUI
         private void tabControl_TabIndexChanged(object sender, EventArgs e)
         {
             this.UpdateControlPosition();
+        }
+
+        private void tableControl_OnDelete(Table table)
+        {
+            for(int i = 0; i < this.tabPages.Count; i++)
+            {
+                for(int j = 0; j < this.tabPages[i].Controls.Count; j++)
+                {
+                }
+            }
         }
     }
 }
