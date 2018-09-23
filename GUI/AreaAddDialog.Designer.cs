@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class AddAreaDialog
+    partial class AreaAddDialog
     {
         /// <summary>
         /// Required designer variable.

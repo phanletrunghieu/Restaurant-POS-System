@@ -94,7 +94,7 @@ namespace GUI
 
         private void btnAddArea_Click(object sender, EventArgs e)
         {
-            AddAreaDialog addAreaDialog = new AddAreaDialog();
+            AreaAddDialog addAreaDialog = new AreaAddDialog();
             DialogResult dr=addAreaDialog.ShowDialog();
             if(dr==DialogResult.OK)
             {
@@ -124,8 +124,14 @@ namespace GUI
         {
             for(int i = 0; i < this.tabPages.Count; i++)
             {
-                for(int j = 0; j < this.tabPages[i].Controls.Count; j++)
+                List<TableControl> controls = this.tabPages[i].Controls.OfType<TableControl>().ToList();
+                for (int j = 0; j < controls.Count; j++)
                 {
+                    if(controls[j].Table.ID == table.ID)
+                    {
+                        this.tabPages[i].Controls.RemoveAt(j);
+                        this.UpdateControlPosition();
+                    }
                 }
             }
         }
