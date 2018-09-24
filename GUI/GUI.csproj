@@ -78,6 +78,12 @@
     <Compile Include="SeatSetup.Designer.cs">
       <DependentUpon>SeatSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableAddDialog.Designer.cs">
+      <DependentUpon>TableAddDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SeatSetup.resx">
       <DependentUpon>SeatSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableAddDialog.resx">
+      <DependentUpon>TableAddDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TableControl.resx">
       <DependentUpon>TableControl.cs</DependentUpon>
