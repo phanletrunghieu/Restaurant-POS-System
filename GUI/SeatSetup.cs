@@ -41,6 +41,17 @@ namespace GUI
                 t.UseVisualStyleBackColor = true;
                 t.AutoScroll = true;
 
+                // add addbutton
+                Button button = new Button();
+                button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+                button.Location = new System.Drawing.Point(562, 7);
+                button.Size = new System.Drawing.Size(20, 20);
+                button.Tag = area;
+                button.Text = "+";
+                button.Click += new EventHandler(this.btnAddTable_Click);
+
+                t.Controls.Add(button);
+
                 // add tables
                 TableBLL tableBLL = new TableBLL();
                 List<Table> listTable = tableBLL.ListTablesByArea(area);
@@ -134,6 +145,14 @@ namespace GUI
                     }
                 }
             }
+        }
+
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            Area area = (Area)btn.Tag;
+            new TableAddDialog(area).ShowDialog();
+            this.LoadData();
         }
     }
 }
