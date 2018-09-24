@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,15 @@ namespace BLL
             {
                 model.Tables.Attach(table);
                 model.Tables.Remove(table);
+                model.SaveChanges();
+            }
+        }
+
+        public void Update(Table table)
+        {
+            using (MyDBContext model = new MyDBContext())
+            {
+                model.Tables.AddOrUpdate(table);
                 model.SaveChanges();
             }
         }

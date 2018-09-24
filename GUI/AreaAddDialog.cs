@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class AddAreaDialog : Form
+    public partial class AreaAddDialog : Form
     {
         public string AreaName;
         public bool IsAddTable;
         public decimal TableFrom;
         public decimal TableTo;
 
-        public AddAreaDialog()
+        public AreaAddDialog()
         {
             InitializeComponent();
         }

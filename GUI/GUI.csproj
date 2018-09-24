@@ -52,11 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddAreaDialog.cs">
+    <Compile Include="AreaAddDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddAreaDialog.Designer.cs">
-      <DependentUpon>AddAreaDialog.cs</DependentUpon>
+    <Compile Include="AreaAddDialog.Designer.cs">
+      <DependentUpon>AreaAddDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,14 @@
     <Compile Include="TableControl.Designer.cs">
       <DependentUpon>TableControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddAreaDialog.resx">
-      <DependentUpon>AddAreaDialog.cs</DependentUpon>
+    <Compile Include="TableEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableEditDialog.Designer.cs">
+      <DependentUpon>TableEditDialog.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AreaAddDialog.resx">
+      <DependentUpon>AreaAddDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TableControl.resx">
       <DependentUpon>TableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableEditDialog.resx">
+      <DependentUpon>TableEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
