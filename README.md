@@ -1,6 +1,8 @@
 # Restaurant Management
 
 ## Migrate Database
-
-- In `DAL`, update `connectionStrings` in `App.config`
-- In `Package Manager Console`, run `Update-Database`
+- Install SQLServer Express
+- Create a database with name "QLNhaHang"
+- In `DAL`, update `connectionStrings` in `App.config` (if necessary)
+- Go to View > Other Windows > Package Manager Console
+- At `Package Manager Console`, select default project is "DAL", run `Update-Database`
