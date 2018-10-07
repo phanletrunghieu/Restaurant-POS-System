@@ -41,16 +41,25 @@ namespace GUI
                 t.UseVisualStyleBackColor = true;
                 t.AutoScroll = true;
 
-                // add addbutton
-                Button button = new Button();
-                button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-                button.Location = new System.Drawing.Point(562, 7);
-                button.Size = new System.Drawing.Size(20, 20);
-                button.Tag = area;
-                button.Text = "+";
-                button.Click += new EventHandler(this.btnAddTable_Click);
+                // button add table
+                Button btnAddTable = new Button();
+                btnAddTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+                btnAddTable.Location = new System.Drawing.Point(6, 6);
+                btnAddTable.Size = new System.Drawing.Size(75, 20);
+                btnAddTable.Tag = area;
+                btnAddTable.Text = "Add table";
+                btnAddTable.Click += new EventHandler(this.btnAddTable_Click);
+                t.Controls.Add(btnAddTable);
 
-                t.Controls.Add(button);
+                // button delete area
+                Button btnDelArea= new Button();
+                btnDelArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+                btnDelArea.Location = new System.Drawing.Point(6, 29);
+                btnDelArea.Size = new System.Drawing.Size(75, 20);
+                btnDelArea.Tag = area;
+                btnDelArea.Text = "Delete area";
+                btnDelArea.Click += new EventHandler(this.btnDeleteArea_Click);
+                t.Controls.Add(btnDelArea);
 
                 // add tables
                 TableBLL tableBLL = new TableBLL();
@@ -76,8 +85,9 @@ namespace GUI
             int tableWidth = 150;
             int tableHeight = 70;
             int minPadding = 6;
+            int contentPadding = 90;
 
-            for(int i = 0; i < this.tabPages.Count; i++)
+            for (int i = 0; i < this.tabPages.Count; i++)
             {
                 List<TableControl> controls = this.tabPages[i].Controls.OfType<TableControl>().ToList();
 
@@ -87,7 +97,9 @@ namespace GUI
                 // calculate paddingHorizontal
                 int containerWidth = (tableWidth + minPadding) * Math.Min(cols, controls.Count) - minPadding;
                 int paddingHorizontal = (this.tabPages[i].Width - containerWidth) / 2;
-                
+                paddingHorizontal = Math.Max(paddingHorizontal, contentPadding);
+
+
                 for (int j = 0; j < controls.Count; j++)
                 {
                     int x = j % cols;
@@ -151,8 +163,24 @@ namespace GUI
         {
             Button btn = (Button)sender;
             Area area = (Area)btn.Tag;
-            new TableAddDialog(area).ShowDialog();
-            this.LoadData();
+            DialogResult dr = new TableAddDialog(area).ShowDialog();
+            if(dr==DialogResult.OK)
+            {
+                this.LoadData();
+            }
+        }
+
+        private void btnDeleteArea_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            Area area = (Area)btn.Tag;
+            DialogResult dr=MessageBox.Show("Are you sure to delete area '" + area.Name + "'?", "Confirm", MessageBoxButtons.YesNo);
+            if(dr == DialogResult.Yes)
+            {
+                AreaBLL areaBLL = new AreaBLL();
+                areaBLL.Delete(area);
+                this.LoadData();
+            }
         }
     }
 }

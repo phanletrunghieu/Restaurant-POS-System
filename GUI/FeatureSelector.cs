@@ -10,16 +10,20 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class RestaurantSetup : Form
+    public partial class FeatureSelector : Form
     {
-        public RestaurantSetup()
+        public FeatureSelector()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSystemSetup_Click(object sender, EventArgs e)
         {
-            new SeatSetup().Show();
+            new RestaurantSetup().Show();
+        }
+
+        private void btnWork_Click(object sender, EventArgs e)
+        {
         }
     }
 }
