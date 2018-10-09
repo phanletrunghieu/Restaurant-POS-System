@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnSeat = new System.Windows.Forms.Button();
+            this.btnDepartment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSeat
@@ -41,12 +42,23 @@
             this.btnSeat.UseVisualStyleBackColor = true;
             this.btnSeat.Click += new System.EventHandler(this.btnSeat_Click);
             // 
+            // btnDepartment
+            // 
+            this.btnDepartment.Location = new System.Drawing.Point(93, 12);
+            this.btnDepartment.Name = "btnDepartment";
+            this.btnDepartment.Size = new System.Drawing.Size(75, 23);
+            this.btnDepartment.TabIndex = 1;
+            this.btnDepartment.Text = "Department";
+            this.btnDepartment.UseVisualStyleBackColor = true;
+            this.btnDepartment.Click += new System.EventHandler(this.btnDepartment_Click);
+            // 
             // RestaurantSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 263);
             this.Controls.Add(this.btnSeat);
+            this.Controls.Add(this.btnDepartment);
             this.Name = "RestaurantSetup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Restaurant Setup";
@@ -58,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnSeat;
+        private System.Windows.Forms.Button btnDepartment;
     }
 }

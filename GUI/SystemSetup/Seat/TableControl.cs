@@ -20,7 +20,7 @@ namespace GUI
         private Table table;
 
         public Table Table {
-            get => table;
+            get { return table; }
             set
             {
                 table = value;

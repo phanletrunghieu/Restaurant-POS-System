@@ -76,7 +76,7 @@ namespace GUI
                 this.tabControl.Controls.Add(t);
             }
             this.tabControl.SelectedIndex = Math.Min(listArea.Count, currIndex);
-
+        
             this.UpdateControlPosition();
         }
 
