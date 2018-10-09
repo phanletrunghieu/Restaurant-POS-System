@@ -21,5 +21,10 @@ namespace GUI
         {
             new SeatSetup().Show();
         }
+
+        private void btnDepartment_Click(object sender, EventArgs e)
+        {
+            new DepartmentSetup().Show();
+        }
     }
 }

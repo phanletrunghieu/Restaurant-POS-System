@@ -54,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaBLL.cs" />
+    <Compile Include="DepartmentBLL.cs" />
+    <Compile Include="EmloyeeDepartmentBLL.cs" />
+    <Compile Include="EmployeeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableBLL.cs" />
     <Compile Include="UserBLL.cs" />

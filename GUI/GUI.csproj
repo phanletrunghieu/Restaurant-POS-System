@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -58,6 +62,36 @@
     <Compile Include="SystemSetup\Seat\AreaAddDialog.Designer.cs">
       <DependentUpon>AreaAddDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="DepartmentAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentAddDialog.Designer.cs">
+      <DependentUpon>DepartmentAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentEditDialog.Designer.cs">
+      <DependentUpon>DepartmentEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentSetup.Designer.cs">
+      <DependentUpon>DepartmentSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmloyeeAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmloyeeAddDialog.Designer.cs">
+      <DependentUpon>EmloyeeAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmloyeeEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmloyeeEditDialog.Designer.cs">
+      <DependentUpon>EmloyeeEditDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +103,12 @@
     </Compile>
     <Compile Include="FeatureSelector.Designer.cs">
       <DependentUpon>FeatureSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassworkEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassworkEditDialog.Designer.cs">
+      <DependentUpon>PassworkEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,8 +148,26 @@
     <EmbeddedResource Include="FeatureSelector.resx">
       <DependentUpon>FeatureSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentAddDialog.resx">
+      <DependentUpon>DepartmentAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentEditDialog.resx">
+      <DependentUpon>DepartmentEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentSetup.resx">
+      <DependentUpon>DepartmentSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmloyeeAddDialog.resx">
+      <DependentUpon>EmloyeeAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmloyeeEditDialog.resx">
+      <DependentUpon>EmloyeeEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassworkEditDialog.resx">
+      <DependentUpon>PassworkEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
