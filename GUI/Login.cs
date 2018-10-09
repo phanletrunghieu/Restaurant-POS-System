@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,11 +30,13 @@ namespace GUI
             try
             {
                 UserBLL userBLL = new UserBLL();
-                bool success = userBLL.Login(txtUserName.Text, txtPassword.Text);
-                if (!success)
+                Employee employee = userBLL.Find(this.txtUserName.Text);
+                if(!BCrypt.Net.BCrypt.CheckPassword(txtPassword.Text, employee.Password))
                 {
                     throw new Exception("Login fail");
                 }
+
+                GlobalData.EMPLOYEE = employee;
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

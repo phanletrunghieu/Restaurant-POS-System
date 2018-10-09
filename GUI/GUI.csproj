@@ -56,6 +56,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\SelectMenuItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\SelectMenuItemControl.Designer.cs">
+      <DependentUpon>SelectMenuItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalData.cs" />
+    <Compile Include="StaffWorking\CreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\TablesStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\TablesStatus.Designer.cs">
+      <DependentUpon>TablesStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetup\Seat\AreaAddDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,10 +149,16 @@
     <Compile Include="SystemSetup\Seat\TableAddDialog.Designer.cs">
       <DependentUpon>TableAddDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemSetup\Seat\TableControl.cs">
+    <Compile Include="Control\MenuItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SystemSetup\Seat\TableControl.Designer.cs">
+    <Compile Include="Control\MenuItemControl.Designer.cs">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TableControl.Designer.cs">
       <DependentUpon>TableControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSetup\Seat\TableEditDialog.cs">
@@ -142,6 +167,19 @@
     <Compile Include="SystemSetup\Seat\TableEditDialog.Designer.cs">
       <DependentUpon>TableEditDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\UtilsImage.cs" />
+    <EmbeddedResource Include="Control\MenuItemControl.resx">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\SelectMenuItemControl.resx">
+      <DependentUpon>SelectMenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
+      <DependentUpon>TablesStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Seat\AreaAddDialog.resx">
       <DependentUpon>AreaAddDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,7 +225,7 @@
     <EmbeddedResource Include="SystemSetup\Seat\TableAddDialog.resx">
       <DependentUpon>TableAddDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Seat\TableControl.resx">
+    <EmbeddedResource Include="Control\TableControl.resx">
       <DependentUpon>TableControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Seat\TableEditDialog.resx">
@@ -217,5 +255,6 @@
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

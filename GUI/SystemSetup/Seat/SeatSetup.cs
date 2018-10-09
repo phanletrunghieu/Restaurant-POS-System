@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DAL;
+using GUI.Control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,7 @@ namespace GUI
                 t.Name = area.Name;
                 t.Padding = new System.Windows.Forms.Padding(3);
                 t.Size = new System.Drawing.Size(597, 257);
+                t.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 t.Text = area.Name;
                 t.UseVisualStyleBackColor = true;
                 t.AutoScroll = true;
@@ -66,7 +68,8 @@ namespace GUI
                 List<Table> listTable = tableBLL.ListTablesByArea(area);
                 for (int i = 0; i < listTable.Count; i++)
                 {
-                    var tt = new TableControl(listTable[i]);
+                    var tt = new TableControl(listTable[i], false);
+                    tt.OnEdit += new TableControl.OnEditHandler(this.tableControl_OnEdit);
                     tt.OnDelete += new TableControl.OnDeleteHandler(this.tableControl_OnDelete);
                     t.Controls.Add(tt);
                 }
@@ -156,6 +159,16 @@ namespace GUI
                         this.UpdateControlPosition();
                     }
                 }
+            }
+        }
+
+        private void tableControl_OnEdit(TableControl sender)
+        {
+            TableEditDialog tableEditDialog = new TableEditDialog(sender.Table);
+            DialogResult dr = tableEditDialog.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                sender.Table = tableEditDialog.table;
             }
         }
 

@@ -22,5 +22,18 @@ namespace BLL
                 return BCrypt.Net.BCrypt.CheckPassword(pass, employee.Password);
             }
         }
+
+        public Employee Find(string username)
+        {
+            using (MyDBContext model = new MyDBContext())
+            {
+                Employee employee = model.Employees.Where(e => e.Username == username).FirstOrDefault();
+                if (employee == null)
+                {
+                    throw new Exception("Employee is not exist");
+                }
+                return employee;
+            }
+        }
     }
 }

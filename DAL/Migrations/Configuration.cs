@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DAL.MyDBContext>
@@ -53,16 +54,16 @@
                 new Employee
                 {
                     ID = 1,
-                    Name = "Hiếu Đẹp Trai 1",
-                    Username = "hieudeptrai1",
-                    Password = "$2a$10$PADs98/Fbia9zEOyFk3dQun96omhId5TyTIXP.JcE6w/oCCLZMvnG"
+                    Name = "Admin",
+                    Username = "admin",
+                    Password = BCrypt.Net.BCrypt.HashPassword("admin", BCrypt.Net.BCrypt.GenerateSalt())
                 },
                 new Employee
                 {
                     ID = 2,
-                    Name = "Hiếu Đẹp Trai 2",
-                    Username = "hieudeptrai2",
-                    Password = "$2a$10$PADs98/Fbia9zEOyFk3dQun96omhId5TyTIXP.JcE6w/oCCLZMvnG"
+                    Name = "User",
+                    Username = "user",
+                    Password = BCrypt.Net.BCrypt.HashPassword("user", BCrypt.Net.BCrypt.GenerateSalt())
                 }
             );
 
@@ -83,6 +84,154 @@
                     DepartmentID = 2
                 }
             );
+
+            context.Menus.AddOrUpdate(
+                new Menu{ ID = 1, Name = "Ăn sáng" },
+                new Menu { ID = 2, Name = "Ăn trưa" },
+                new Menu { ID = 3, Name = "Ăn tối" },
+                new Menu { ID = 4, Name = "Nước" }
+            );
+
+            string rootPath = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            context.MenuItems.AddOrUpdate(
+                new MenuItem {
+                    ID = 1,
+                    MenuID = 1,
+                    Name = "Hủ tiếu nam vang",
+                    Price = 20000,
+                    PriceAfter = 20000,
+                    Image = File.ReadAllBytes(rootPath+"/data/images/hu-tieu-nam-vang.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 2,
+                    MenuID = 1,
+                    Name = "Bún mắm",
+                    Price = 25000,
+                    PriceAfter = 20000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/bun-mam.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 3,
+                    MenuID = 1,
+                    Name = "Cơm sườn",
+                    Price = 15000,
+                    PriceAfter = 15000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/com-suon.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 4,
+                    MenuID = 1,
+                    Name = "Bún riêu cua",
+                    Price = 15000,
+                    PriceAfter = 15000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/bun-rieu-cua.jpg")
+                },
+
+                new MenuItem
+                {
+                    ID = 5,
+                    MenuID = 2,
+                    Name = "Sườn non xào chua ngọt",
+                    Price = 25000,
+                    PriceAfter = 20000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/suon-non-xao-chua-ngot.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 6,
+                    MenuID = 2,
+                    Name = "Canh chua cá lóc",
+                    Price = 25000,
+                    PriceAfter = 20000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/canh-chua-ca-loc.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 7,
+                    MenuID = 2,
+                    Name = "Cơm chiên cá mặn",
+                    Price = 30000,
+                    PriceAfter = 25000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/com-chien-ca-man.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 8,
+                    MenuID = 2,
+                    Name = "Sườn cây chiên xả",
+                    Price = 30000,
+                    PriceAfter = 25000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/suon-cay-chien-xa.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 9,
+                    MenuID = 3,
+                    Name = "Lẫu bò",
+                    Price = 99000,
+                    PriceAfter = 98000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/lau-bo.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 10,
+                    MenuID = 3,
+                    Name = "Lẫu mắm",
+                    Price = 55000,
+                    PriceAfter = 50000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/lau-mam.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 11,
+                    MenuID = 3,
+                    Name = "Bánh xèo",
+                    Price = 35000,
+                    PriceAfter = 30000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/banh-xeo.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 12,
+                    MenuID = 3,
+                    Name = "Cá kho tộ",
+                    Price = 25000,
+                    PriceAfter = 20000,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/ca-kho-to.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 13,
+                    MenuID = 4,
+                    Name = "Coca Cola",
+                    Price = 10000,
+                    PriceAfter = 9500,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/cocacola.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 14,
+                    MenuID = 4,
+                    Name = "Mirinda Cam",
+                    Price = 10000,
+                    PriceAfter = 9500,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/mirinda-cam.jpg")
+                },
+                new MenuItem
+                {
+                    ID = 15,
+                    MenuID = 4,
+                    Name = "Mirinda Soda Kem",
+                    Price = 10000,
+                    PriceAfter = 9500,
+                    Image = File.ReadAllBytes(rootPath + "/data/images/mirinda-soda-kem.jpg")
+                }
+            );
+
+            
         }
     }
 }

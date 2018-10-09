@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DAL;
+using GUI.Control;
 
 namespace GUI
 {
@@ -23,10 +24,6 @@ namespace GUI
 
         public void LoadData()
         {
-            int width = 150;
-            int height = 70;
-            int minPadding = 6;
-
             this.tabControl.Controls.Clear();
             listDataGridView.Clear();
 

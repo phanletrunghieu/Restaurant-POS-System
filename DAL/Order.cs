@@ -21,7 +21,7 @@ namespace DAL
 
         public string InvoiceNo { get; set; }
 
-        public bool? OrderType { get; set; }
+        public byte? OrderType { get; set; }
 
         [Column(TypeName = "datetime2")]
         public DateTime? DateCreated { get; set; }
@@ -31,18 +31,18 @@ namespace DAL
 
         public int? EmployeeID { get; set; }
 
-        public bool? PaymentType { get; set; }
+        public byte? PaymentType { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? VAT { get; set; }
 
         public int? Discount { get; set; }
 
-        public bool? DiscountType { get; set; }
+        public byte? DiscountType { get; set; }
 
         public int? Extra { get; set; }
 
-        public bool? ExtraType { get; set; }
+        public byte? ExtraType { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? PriceBefore { get; set; }
@@ -55,6 +55,8 @@ namespace DAL
 
         [Column(TypeName = "money")]
         public decimal? MoneyCharge { get; set; }
+
+        public string CustomerName { get; set; }
 
         public virtual Employee Employee { get; set; }
 
