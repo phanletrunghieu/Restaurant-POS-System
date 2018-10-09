@@ -19,7 +19,7 @@ namespace BLL
                 {
                     throw new Exception("Employee is not exist");
                 }
-                return BCrypt.Net.BCrypt.CheckPassword(pass, employee.Password); ;
+                return BCrypt.Net.BCrypt.CheckPassword(pass, employee.Password);
             }
         }
     }

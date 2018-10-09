@@ -27,5 +27,19 @@ namespace BLL
                 return area;
             }
         }
+
+        public Area Delete(Area area)
+        {
+            using (MyDBContext model = new MyDBContext())
+            {
+                model.Areas.Attach(area);
+
+                //delete tables in this area
+                model.Tables.RemoveRange(area.Tables);
+                model.Areas.Remove(area);
+                model.SaveChanges();
+                return area;
+            }
+        }
     }
 }

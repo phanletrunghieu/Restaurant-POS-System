@@ -45,6 +45,7 @@ namespace GUI
         {
             TableBLL tableBLL = new TableBLL();
             tableBLL.CreateTable(new Table { Name = this.txtName.Text, AreaID = this.area.ID });
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

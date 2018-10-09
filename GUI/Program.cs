@@ -20,7 +20,7 @@ namespace GUI
             DialogResult dr = loginForm.ShowDialog();
             if(dr == DialogResult.OK)
             {
-                Application.Run(new RestaurantSetup());
+                Application.Run(new FeatureSelector());
             }
         }
     }
