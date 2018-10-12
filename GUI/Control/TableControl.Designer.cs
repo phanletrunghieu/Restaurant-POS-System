@@ -1,6 +1,8 @@
-﻿namespace GUI
+﻿using System.Windows.Forms;
+
+namespace GUI.Control
 {
-    partial class TableControl
+    partial class TableControl : UserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -48,6 +50,7 @@
             this.txtName.TabIndex = 0;
             this.txtName.Text = "Bàn 1";
             this.txtName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtName.Click += new System.EventHandler(this.txtName_Click);
             this.txtName.DoubleClick += new System.EventHandler(this.txtName_DoubleClick);
             // 
             // contextMenuStrip

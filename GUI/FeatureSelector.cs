@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.StaffWorking;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,7 @@ namespace GUI
 
         private void btnWork_Click(object sender, EventArgs e)
         {
+            new TablesStatus().Show();
         }
     }
 }
