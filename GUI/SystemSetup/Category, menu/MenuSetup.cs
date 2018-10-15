@@ -23,7 +23,8 @@ namespace GUI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            DeleteMenu delMenu = new DeleteMenu();
+            delMenu.Show();
         }
 
         private void lsCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,7 +34,9 @@ namespace GUI
 
         private void btnAddMenu_Click(object sender, EventArgs e)
         {
-
+            AddMenuItem addMenu = new AddMenuItem();
+            addMenu.Show();
+            
         }
         private void LoadData()
         {
@@ -82,6 +85,12 @@ namespace GUI
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEditMenu_Click(object sender, EventArgs e)
+        {
+            EditMenu editMenu = new EditMenu();
+            editMenu.Show();
         }
     }
 }

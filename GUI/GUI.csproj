@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemSetup\Category, menu\DeleteMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\DeleteMenu.Designer.cs">
+      <DependentUpon>DeleteMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\AddMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\AddMenuItem.Designer.cs">
+      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\SelectMenuItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,12 +86,6 @@
     </Compile>
     <Compile Include="StaffWorking\TablesStatus.Designer.cs">
       <DependentUpon>TablesStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SystemSetup\Category, menu\AddMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SystemSetup\Category, menu\AddMenu.Designer.cs">
-      <DependentUpon>AddMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSetup\Category, menu\Delete.cs">
       <SubType>Form</SubType>
@@ -204,11 +210,14 @@
     <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
       <DependentUpon>TablesStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Category, menu\AddMenu.resx">
-      <DependentUpon>AddMenu.cs</DependentUpon>
+    <EmbeddedResource Include="SystemSetup\Category, menu\AddMenuItem.resx">
+      <DependentUpon>AddMenuItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Category, menu\Delete.resx">
       <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Category, menu\DeleteMenu.resx">
+      <DependentUpon>DeleteMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Category, menu\EditMenu.resx">
       <DependentUpon>EditMenu.cs</DependentUpon>

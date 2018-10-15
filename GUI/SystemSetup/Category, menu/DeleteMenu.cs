@@ -1,7 +1,4 @@
 ﻿using System;
-using BLL;
-using DAL;
-using GUI.Control;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,15 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class EditMenu : Form
+    public partial class DeleteMenu : Form
     {
-        public EditMenu()
+        public DeleteMenu()
         {
             InitializeComponent();
-            /*var MenuItems = new MenuItemBLL();
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "MenuID";
-            comboBox1.DataSource = MenuItems;*/
         }
     }
 }

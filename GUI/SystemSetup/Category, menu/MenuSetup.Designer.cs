@@ -84,6 +84,7 @@
             this.btnEditMenu.TabIndex = 5;
             this.btnEditMenu.Text = "Edit Menu";
             this.btnEditMenu.UseVisualStyleBackColor = true;
+            this.btnEditMenu.Click += new System.EventHandler(this.btnEditMenu_Click);
             // 
             // MenuSetup
             // 

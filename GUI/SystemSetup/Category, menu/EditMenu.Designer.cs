@@ -1,4 +1,4 @@
-﻿namespace GUI.SystemSetup.Category__menu
+﻿namespace GUI
 {
     partial class EditMenu
     {
