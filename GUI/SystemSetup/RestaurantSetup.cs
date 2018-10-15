@@ -26,5 +26,15 @@ namespace GUI
         {
             new DepartmentSetup().Show();
         }
+
+        private void RestaurantSetup_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            new MenuSetup().Show();
+        }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.btnSeat = new System.Windows.Forms.Button();
             this.btnDepartment = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSeat
@@ -52,17 +53,29 @@
             this.btnDepartment.UseVisualStyleBackColor = true;
             this.btnDepartment.Click += new System.EventHandler(this.btnDepartment_Click);
             // 
+            // btnMenu
+            // 
+            this.btnMenu.Location = new System.Drawing.Point(174, 12);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(75, 23);
+            this.btnMenu.TabIndex = 2;
+            this.btnMenu.Text = "Menu";
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
             // RestaurantSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 263);
+            this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnSeat);
             this.Controls.Add(this.btnDepartment);
             this.Name = "RestaurantSetup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Restaurant Setup";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.RestaurantSetup_Load);
             this.ResumeLayout(false);
 
         }
@@ -71,5 +84,6 @@
 
         private System.Windows.Forms.Button btnSeat;
         private System.Windows.Forms.Button btnDepartment;
+        private System.Windows.Forms.Button btnMenu;
     }
 }

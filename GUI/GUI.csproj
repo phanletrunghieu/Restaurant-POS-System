@@ -75,6 +75,30 @@
     <Compile Include="StaffWorking\TablesStatus.Designer.cs">
       <DependentUpon>TablesStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemSetup\Category, menu\AddMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\AddMenu.Designer.cs">
+      <DependentUpon>AddMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\Delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\Delete.Designer.cs">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\EditMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\EditMenu.Designer.cs">
+      <DependentUpon>EditMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\MenuSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Category, menu\MenuSetup.Designer.cs">
+      <DependentUpon>MenuSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetup\Seat\AreaAddDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +203,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
       <DependentUpon>TablesStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Category, menu\AddMenu.resx">
+      <DependentUpon>AddMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Category, menu\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Category, menu\EditMenu.resx">
+      <DependentUpon>EditMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Category, menu\MenuSetup.resx">
+      <DependentUpon>MenuSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Seat\AreaAddDialog.resx">
       <DependentUpon>AreaAddDialog.cs</DependentUpon>
