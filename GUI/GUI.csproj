@@ -56,17 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SystemSetup\Category, menu\DeleteMenu.cs">
+    <Compile Include="SystemSetup\Menu\AddMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SystemSetup\Category, menu\DeleteMenu.Designer.cs">
-      <DependentUpon>DeleteMenu.cs</DependentUpon>
+    <Compile Include="SystemSetup\Menu\AddMenu.Designer.cs">
+      <DependentUpon>AddMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemSetup\Category, menu\AddMenuItem.cs">
+    <Compile Include="SystemSetup\Menu\AddFood.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SystemSetup\Category, menu\AddMenuItem.Designer.cs">
-      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    <Compile Include="SystemSetup\Menu\AddFood.Designer.cs">
+      <DependentUpon>AddFood.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\SelectMenuItemControl.cs">
       <SubType>UserControl</SubType>
@@ -87,22 +87,10 @@
     <Compile Include="StaffWorking\TablesStatus.Designer.cs">
       <DependentUpon>TablesStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemSetup\Category, menu\Delete.cs">
+    <Compile Include="SystemSetup\Menu\MenuSetup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SystemSetup\Category, menu\Delete.Designer.cs">
-      <DependentUpon>Delete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SystemSetup\Category, menu\EditMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SystemSetup\Category, menu\EditMenu.Designer.cs">
-      <DependentUpon>EditMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SystemSetup\Category, menu\MenuSetup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SystemSetup\Category, menu\MenuSetup.Designer.cs">
+    <Compile Include="SystemSetup\Menu\MenuSetup.Designer.cs">
       <DependentUpon>MenuSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSetup\Seat\AreaAddDialog.cs">
@@ -210,19 +198,13 @@
     <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
       <DependentUpon>TablesStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Category, menu\AddMenuItem.resx">
-      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    <EmbeddedResource Include="SystemSetup\Menu\AddMenu.resx">
+      <DependentUpon>AddMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Category, menu\Delete.resx">
-      <DependentUpon>Delete.cs</DependentUpon>
+    <EmbeddedResource Include="SystemSetup\Menu\AddFood.resx">
+      <DependentUpon>AddFood.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Category, menu\DeleteMenu.resx">
-      <DependentUpon>DeleteMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Category, menu\EditMenu.resx">
-      <DependentUpon>EditMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Category, menu\MenuSetup.resx">
+    <EmbeddedResource Include="SystemSetup\Menu\MenuSetup.resx">
       <DependentUpon>MenuSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Seat\AreaAddDialog.resx">
