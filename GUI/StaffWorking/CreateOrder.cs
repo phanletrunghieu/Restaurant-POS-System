@@ -15,25 +15,65 @@ namespace GUI.StaffWorking
 {
     public partial class CreateOrder : Form
     {
-        public Table Table { get; set; }
+        public List<Table> Tables;
+        private Order order; // if booked
+
+        private Area area;
+        public Area Area
+        {
+            get { return area; }
+            set
+            {
+                area = value;
+                lbArea.Text = area.Name;
+            }
+        }
 
         private List<SelectMenuItemControl> SelectedMenuItems = new List<SelectMenuItemControl>();
 
         public CreateOrder()
         {
             InitializeComponent();
-            this.LoadData();
-            this.Table = new Table
-            {
-                ID = 1,
-                Name = "Bàn 101",
-                Status = 1,
-                AreaID = 1
+            this.Tables = new List<Table>{
+                new Table
+                {
+                    ID = 1,
+                    Name = "Bàn 101",
+                    Status = 1,
+                    AreaID = 1
+                }
             };
+        }
+
+        public CreateOrder(Table table, Area area)
+        {
+            InitializeComponent();
+            this.Tables = new List<Table>{table};
+            this.Area = area;
+        }
+
+        private void CreateOrder_Load(object sender, EventArgs e)
+        {
+            this.LoadData();
         }
 
         private void LoadData()
         {
+            this.lbTable.Text = this.getTableName();
+
+            // Get order
+            if(this.Tables[0].Status != 0)
+            {
+                // had created order
+                OrderBLL orderBLL = new OrderBLL();
+                this.order = orderBLL.GetCurrentOrderByTable(this.Tables[0]);
+                foreach(OrderDetail od in this.order.OrderDetails)
+                {
+                    this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, true);
+                }
+            }
+
+            // Load menu
             MenuBLL menuBLL = new MenuBLL();
             List<DAL.Menu> menus = menuBLL.ListMenu();
 
@@ -71,6 +111,17 @@ namespace GUI.StaffWorking
             }
         }
 
+        private string getTableName()
+        {
+            string res="";
+            foreach(Table table in this.Tables)
+                res += table.Name + ", ";
+            if (res.Length > 0)
+                res = res.Substring(0, res.Length - 2);
+
+            return res;
+        }
+
         private void MenuItem_OnClick(object sender, EventArgs e)
         {
             MenuItemControl menuItemControl = (MenuItemControl)sender;
@@ -79,17 +130,22 @@ namespace GUI.StaffWorking
             List<SelectMenuItemControl> listControls = this.flowLayoutPanelRight.Controls.OfType<SelectMenuItemControl>().ToList();
             try
             {
-                SelectMenuItemControl find = listControls.Where(c => c.MenuItem.ID == menuItem.ID).Single();
+                SelectMenuItemControl find = listControls.Where(c => !c.ReadOnly && c.MenuItem.ID == menuItem.ID).Single();
                 find.Quantity++;
             }
             catch (Exception)
             {
-                SelectMenuItemControl selectMenuItem = new SelectMenuItemControl(menuItem, 1);
-                selectMenuItem.Width = this.flowLayoutPanelRight.Width - 24;
-                selectMenuItem.Height = (int)((double)selectMenuItem.Width / 3.6);
-                selectMenuItem.OnDecrease += new SelectMenuItemControl.OnDecreaseHandle(this.SelectMenuItemControl_OnDecrease);
-                this.flowLayoutPanelRight.Controls.Add(selectMenuItem);
+                this.NewSelectMenuItem(menuItem, 1);
             }
+        }
+
+        private void NewSelectMenuItem(DAL.MenuItem menuItem, int quantity = 1, bool readOnly = false)
+        {
+            SelectMenuItemControl selectMenuItem = new SelectMenuItemControl(menuItem, quantity, readOnly);
+            selectMenuItem.Width = this.flowLayoutPanelRight.Width - 24;
+            selectMenuItem.Height = (int)((double)selectMenuItem.Width / 3.6);
+            selectMenuItem.OnDecrease += new SelectMenuItemControl.OnDecreaseHandle(this.SelectMenuItemControl_OnDecrease);
+            this.flowLayoutPanelRight.Controls.Add(selectMenuItem);
         }
 
         private void SelectMenuItemControl_OnDecrease(SelectMenuItemControl sender)
@@ -107,8 +163,12 @@ namespace GUI.StaffWorking
             List<SelectMenuItemControl> listControls = this.flowLayoutPanelRight.Controls.OfType<SelectMenuItemControl>().ToList();
             foreach(SelectMenuItemControl c in listControls)
             {
+                if (c.ReadOnly)
+                    continue;
+
                 listOrderDetail.Add(new OrderDetail
                 {
+                    OrderID = this.order!=null ? this.order.ID : 0,
                     MenuItemID = c.MenuItem.ID,
                     Price = c.MenuItem.Price,
                     Quantity = c.Quantity
@@ -116,7 +176,17 @@ namespace GUI.StaffWorking
             }
 
             OrderBLL orderBLL = new OrderBLL();
-            Order order = orderBLL.CreateOrder(GlobalData.EMPLOYEE, this.Table, this.txtCustomerName.Text, listOrderDetail);
+
+            if (this.order == null)
+            {
+                //create order
+                orderBLL.CreateOrder(GlobalData.EMPLOYEE, this.Tables, this.txtCustomerName.Text, listOrderDetail);
+            }
+            else
+            {
+                // add food
+                orderBLL.AddFood(listOrderDetail);
+            }
             this.Close();
         }
     }

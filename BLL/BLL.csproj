@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaBLL.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="DepartmentBLL.cs" />
     <Compile Include="EmloyeeDepartmentBLL.cs" />
     <Compile Include="EmployeeBLL.cs" />

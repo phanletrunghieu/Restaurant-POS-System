@@ -30,17 +30,14 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanelRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.lbArea = new System.Windows.Forms.Label();
+            this.lbTable = new System.Windows.Forms.Label();
             this.btnOrder = new System.Windows.Forms.Button();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanelRight = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.flowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +59,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.flowLayoutPanel);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
@@ -71,35 +67,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.Controls.Add(this.button1);
-            this.flowLayoutPanel.Controls.Add(this.button2);
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(481, 282);
-            this.flowLayoutPanel.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -113,6 +80,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.lbArea);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTable);
             this.splitContainer1.Panel2.Controls.Add(this.btnOrder);
             this.splitContainer1.Panel2.Controls.Add(this.txtCustomerName);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
@@ -121,35 +90,24 @@
             this.splitContainer1.SplitterDistance = 501;
             this.splitContainer1.TabIndex = 1;
             // 
-            // flowLayoutPanelRight
+            // lbArea
             // 
-            this.flowLayoutPanelRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelRight.AutoScroll = true;
-            this.flowLayoutPanelRight.Location = new System.Drawing.Point(0, 32);
-            this.flowLayoutPanelRight.Name = "flowLayoutPanelRight";
-            this.flowLayoutPanelRight.Size = new System.Drawing.Size(139, 255);
-            this.flowLayoutPanelRight.TabIndex = 0;
+            this.lbArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbArea.AutoSize = true;
+            this.lbArea.Location = new System.Drawing.Point(101, 26);
+            this.lbArea.Name = "lbArea";
+            this.lbArea.Size = new System.Drawing.Size(32, 13);
+            this.lbArea.TabIndex = 5;
+            this.lbArea.Text = "Area:";
             // 
-            // label1
+            // lbTable
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Guest:";
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCustomerName.Location = new System.Drawing.Point(40, 3);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(96, 20);
-            this.txtCustomerName.TabIndex = 2;
-            this.txtCustomerName.Text = "Khách lẻ";
+            this.lbTable.AutoSize = true;
+            this.lbTable.Location = new System.Drawing.Point(3, 26);
+            this.lbTable.Name = "lbTable";
+            this.lbTable.Size = new System.Drawing.Size(37, 13);
+            this.lbTable.TabIndex = 4;
+            this.lbTable.Text = "Table:";
             // 
             // btnOrder
             // 
@@ -162,6 +120,36 @@
             this.btnOrder.UseVisualStyleBackColor = true;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerName.Location = new System.Drawing.Point(40, 3);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(96, 20);
+            this.txtCustomerName.TabIndex = 2;
+            this.txtCustomerName.Text = "Khách lẻ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Guest:";
+            // 
+            // flowLayoutPanelRight
+            // 
+            this.flowLayoutPanelRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelRight.AutoScroll = true;
+            this.flowLayoutPanelRight.Location = new System.Drawing.Point(0, 42);
+            this.flowLayoutPanelRight.Name = "flowLayoutPanelRight";
+            this.flowLayoutPanelRight.Size = new System.Drawing.Size(139, 245);
+            this.flowLayoutPanelRight.TabIndex = 0;
+            // 
             // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,9 +160,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateOrder";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.CreateOrder_Load);
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.flowLayoutPanel.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -189,12 +176,11 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRight;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Label lbTable;
+        private System.Windows.Forms.Label lbArea;
     }
 }
