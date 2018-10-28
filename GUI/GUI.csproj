@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemSetup\Menu\AddMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddMenu.Designer.cs">
+      <DependentUpon>AddMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddFood.Designer.cs">
+      <DependentUpon>AddFood.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\SelectMenuItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,6 +86,12 @@
     </Compile>
     <Compile Include="StaffWorking\TablesStatus.Designer.cs">
       <DependentUpon>TablesStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuSetup.Designer.cs">
+      <DependentUpon>MenuSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSetup\Seat\AreaAddDialog.cs">
       <SubType>Form</SubType>
@@ -179,6 +197,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
       <DependentUpon>TablesStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\AddMenu.resx">
+      <DependentUpon>AddMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\AddFood.resx">
+      <DependentUpon>AddFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\MenuSetup.resx">
+      <DependentUpon>MenuSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Seat\AreaAddDialog.resx">
       <DependentUpon>AreaAddDialog.cs</DependentUpon>

@@ -15,7 +15,6 @@ namespace GUI.StaffWorking
 {
     public partial class CreateOrder : Form
     {
-        private Table table;
         public Table Table { get; set; }
 
         private List<SelectMenuItemControl> SelectedMenuItems = new List<SelectMenuItemControl>();

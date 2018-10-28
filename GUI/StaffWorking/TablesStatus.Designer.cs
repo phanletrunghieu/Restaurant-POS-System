@@ -32,7 +32,7 @@ namespace GUI.StaffWorking
         {
             DAL.Table table1 = new DAL.Table();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TablesStatus));
-            this.tableControl1 = new TableControl();
+            this.tableControl1 = new GUI.Control.TableControl();
             this.SuspendLayout();
             // 
             // tableControl1
@@ -46,6 +46,7 @@ namespace GUI.StaffWorking
             table1.AreaID = null;
             table1.ID = 0;
             table1.Name = "Bàn 1";
+            table1.OrderTables = ((System.Collections.Generic.ICollection<DAL.OrderTable>)(resources.GetObject("table1.OrderTables")));
             table1.Status = 0;
             this.tableControl1.Table = table1;
             this.tableControl1.UseBkColorForStatus = true;
