@@ -15,6 +15,20 @@ namespace GUI.Control
     {
         int hover;
 
+        private bool readOnly;
+        public bool ReadOnly
+        {
+            get { return readOnly; }
+            set
+            {
+                readOnly = value;
+                if (readOnly)
+                    this.btnDecrease.Hide();
+                else
+                    this.btnDecrease.Show();
+            }
+        }
+
         private DAL.MenuItem menuItem;
         public DAL.MenuItem MenuItem
         {
@@ -46,12 +60,13 @@ namespace GUI.Control
             InitializeComponent();
         }
 
-        public SelectMenuItemControl(DAL.MenuItem menuItem, int quantity)
+        public SelectMenuItemControl(DAL.MenuItem menuItem, int quantity, bool readOnly=false)
         {
             InitializeComponent();
             AddEvent();
             this.Quantity = quantity;
             this.MenuItem = menuItem;
+            this.ReadOnly = readOnly;
         }
 
         private void AddEvent()

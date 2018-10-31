@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL;
+using DAL;
+using GUI.Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +18,72 @@ namespace GUI.StaffWorking
         public TablesStatus()
         {
             InitializeComponent();
+            this.LoadData();
         }
 
-        private void tableControl1_Click(object sender, EventArgs e)
+        private void LoadData()
         {
-            new CreateOrder().Show();
+            AreaBLL areaBLL = new AreaBLL();
+            List<DAL.Area> areas = areaBLL.ListArea();
+
+            this.tabControl.Controls.Clear();
+
+            foreach (DAL.Area area in areas)
+            {
+                var t = new TabPage();
+                t.Location = new Point(4, 22);
+                t.Name = area.Name;
+                t.Padding = new Padding(3);
+                t.Size = new Size(597, 257);
+                t.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                t.Text = area.Name;
+                t.UseVisualStyleBackColor = true;
+                t.AutoScroll = true;
+                this.tabControl.Controls.Add(t);
+
+                // add layout
+                FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+                flowLayoutPanel.Dock = DockStyle.Fill;
+                flowLayoutPanel.AutoScroll = true;
+                t.Controls.Add(flowLayoutPanel);
+
+                // add menu item
+                TableBLL tableBLL = new TableBLL();
+                List<DAL.Table> tables = tableBLL.ListTablesByArea(area);
+                for (int i = 0; i < tables.Count; i++)
+                {
+                    TableControl tableControl = new TableControl(tables[i], true);
+                    tableControl.Tag = area;
+                    flowLayoutPanel.Controls.Add(tableControl);
+                    tableControl.Click += new EventHandler(this.tableControl_Click);
+                }
+            }
+        }
+
+        private void tableControl_Click(object sender, EventArgs e)
+        {
+            TableControl tableControl = (TableControl)sender;
+            Area area = (Area)tableControl.Tag;
+            CreateOrder createOrder = new CreateOrder(tableControl.Table, area);
+            createOrder.ShowDialog();
+
+            //update table status
+            var tps = this.tabControl.Controls.OfType<TabPage>().ToList();
+            foreach(TabPage tp in tps)
+            {
+                var layout = tp.Controls.OfType<FlowLayoutPanel>().ToList()[0];
+                var tcs = layout.Controls.OfType<TableControl>();
+                foreach(TableControl tc in tcs)
+                {
+                    var tt = createOrder.Tables.Where(t => t.ID == tc.Table.ID).ToList();
+                    if(tt.Count > 0)
+                    {
+                        var tb = tc.Table;
+                        tb.Status = 1;
+                        tc.Table = tb;
+                    }
+                }
+            }
         }
     }
 }

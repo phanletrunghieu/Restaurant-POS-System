@@ -30,42 +30,50 @@ namespace GUI.StaffWorking
         /// </summary>
         private void InitializeComponent()
         {
-            DAL.Table table1 = new DAL.Table();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TablesStatus));
-            this.tableControl1 = new GUI.Control.TableControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableControl1
+            // tabControl
             // 
-            this.tableControl1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.tableControl1.Location = new System.Drawing.Point(12, 12);
-            this.tableControl1.Name = "tableControl1";
-            this.tableControl1.Size = new System.Drawing.Size(142, 75);
-            this.tableControl1.TabIndex = 0;
-            table1.Area = null;
-            table1.AreaID = null;
-            table1.ID = 0;
-            table1.Name = "Bàn 1";
-            table1.OrderTables = ((System.Collections.Generic.ICollection<DAL.OrderTable>)(resources.GetObject("table1.OrderTables")));
-            table1.Status = 0;
-            this.tableControl1.Table = table1;
-            this.tableControl1.UseBkColorForStatus = true;
-            this.tableControl1.Click += new System.EventHandler(this.tableControl1_Click);
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(535, 304);
+            this.tabControl.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(527, 271);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // TablesStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 342);
-            this.Controls.Add(this.tableControl1);
+            this.ClientSize = new System.Drawing.Size(535, 304);
+            this.Controls.Add(this.tabControl);
             this.Name = "TablesStatus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TablesStatus";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private TableControl tableControl1;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }

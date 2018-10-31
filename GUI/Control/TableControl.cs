@@ -50,8 +50,8 @@ namespace GUI.Control
         public TableControl(Table table, bool useBkColorForStatus)
         {
             InitializeComponent();
-            this.Table = table;
             this.UseBkColorForStatus = useBkColorForStatus;
+            this.Table = table;
         }
 
         private void UpdatGUI()
@@ -67,6 +67,10 @@ namespace GUI.Control
                         this.BackColor = System.Drawing.SystemColors.ControlDark;
                         break;
                     case 1:
+                        // serving
+                        this.BackColor = Color.Green;
+                        break;
+                    case 2:
                         //request payment
                         this.BackColor = Color.Red;
                         break;
