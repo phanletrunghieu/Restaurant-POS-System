@@ -12,48 +12,33 @@ namespace BLL
     {
         public List<Table> ListTablesByArea(Area area)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.Tables.Where(t=>t.AreaID == area.ID).ToList();
-            }
+            return Connection.DBContext.Tables.Where(t => t.AreaID == area.ID).ToList();
         }
 
         public Table CreateTable(Table table)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Tables.Add(table);
-                model.SaveChanges();
-                return table;
-            }
+            Connection.DBContext.Tables.Add(table);
+            Connection.DBContext.SaveChanges();
+            return table;
         }
 
         public void CreateTables(List<Table> tables)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Tables.AddRange(tables);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Tables.AddRange(tables);
+            Connection.DBContext.SaveChanges();
         }
 
         public void Delete(Table table)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Tables.Attach(table);
-                model.Tables.Remove(table);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Tables.Attach(table);
+            Connection.DBContext.Tables.Remove(table);
+            Connection.DBContext.SaveChanges();
         }
 
         public void Update(Table table)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Tables.AddOrUpdate(table);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Tables.AddOrUpdate(table);
+            Connection.DBContext.SaveChanges();
         }
     }
 }

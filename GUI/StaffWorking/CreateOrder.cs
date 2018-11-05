@@ -187,6 +187,8 @@ namespace GUI.StaffWorking
                 // add food
                 orderBLL.AddFood(listOrderDetail);
             }
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

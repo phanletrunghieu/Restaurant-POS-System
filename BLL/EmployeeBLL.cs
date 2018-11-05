@@ -12,68 +12,50 @@ namespace BLL
     {
         public List<Employee> ListEmployee()
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.Employees.ToList();
-            }
+            return Connection.DBContext.Employees.ToList();
         }
 
         public List<Employee> ListEmployeeByDepartment(Department department)
         {
-            using (MyDBContext model = new MyDBContext())
+            List<Employee> listEmployee = new List<Employee>();
+            List<EmployeeDepartment> employeeDepartment = Connection.DBContext.EmployeeDepartments.Where(t => t.DepartmentID == department.ID).ToList();
+            for (int i= 0; i< employeeDepartment.Count; i++)
             {
-                List<Employee> listEmployee = new List<Employee>();
-                List<EmployeeDepartment> employeeDepartment = model.EmployeeDepartments.Where(t => t.DepartmentID == department.ID).ToList();
-                for (int i= 0; i< employeeDepartment.Count; i++)
-                {
-                    listEmployee.Add(employeeDepartment[i].Employee);
-                }
-                return listEmployee;
+                listEmployee.Add(employeeDepartment[i].Employee);
             }
+            return listEmployee;
         }
 
         public Employee CreateEmployee(string name , string userName , string passWord)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                Employee employee = new Employee { Name = name , Username = userName , Password = passWord };
-                model.Employees.Add(employee);
-                model.SaveChanges();
-                return employee;
-            }
+            Employee employee = new Employee { Name = name , Username = userName , Password = passWord };
+            Connection.DBContext.Employees.Add(employee);
+            Connection.DBContext.SaveChanges();
+            return employee;
         }
 
         public void DeleteByDepartment(List<EmployeeDepartment> employeeDepartment)
         {
-            using (MyDBContext model = new MyDBContext())
+            for(int i = 0; i < employeeDepartment.Count; i++)
             {
-                for(int i = 0; i < employeeDepartment.Count; i++)
-                {
-                    model.EmployeeDepartments.Attach(employeeDepartment[i]);
-                    model.Employees.Remove(employeeDepartment[i].Employee);
-                }
-                model.SaveChanges();
+                Connection.DBContext.EmployeeDepartments.Attach(employeeDepartment[i]);
+                Connection.DBContext.Employees.Remove(employeeDepartment[i].Employee);
             }
+            Connection.DBContext.SaveChanges();
         }
 
         public void Delete(Employee employee)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Employees.Attach(employee);
-                model.EmployeeDepartments.RemoveRange(employee.EmployeeDepartments);
-                model.Employees.Remove(employee);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Employees.Attach(employee);
+            Connection.DBContext.EmployeeDepartments.RemoveRange(employee.EmployeeDepartments);
+            Connection.DBContext.Employees.Remove(employee);
+            Connection.DBContext.SaveChanges();
         }
 
         public void Update(Employee employee)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Employees.AddOrUpdate(employee);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Employees.AddOrUpdate(employee);
+            Connection.DBContext.SaveChanges();
         }
     }
 }
