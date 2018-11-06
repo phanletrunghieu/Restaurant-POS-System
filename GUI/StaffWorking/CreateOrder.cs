@@ -67,9 +67,12 @@ namespace GUI.StaffWorking
                 // had created order
                 OrderBLL orderBLL = new OrderBLL();
                 this.order = orderBLL.GetCurrentOrderByTable(this.Tables[0]);
-                foreach(OrderDetail od in this.order.OrderDetails)
+                if (order != null)
                 {
-                    this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, true);
+                    foreach (OrderDetail od in this.order.OrderDetails)
+                    {
+                        this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, true);
+                    }
                 }
             }
 
@@ -110,7 +113,12 @@ namespace GUI.StaffWorking
                 }
             }
 
-            
+            // Show/Hide bottom buttonBar
+            if (this.order == null)
+            {
+                this.layoutButton.Hide();
+                this.tabControl.Height += this.layoutButton.Height;
+            }
         }
 
         private string getTableName()

@@ -37,7 +37,7 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.layoutButton = new System.Windows.Forms.TableLayoutPanel();
             this.btnVAT = new System.Windows.Forms.Button();
             this.btnExtra = new System.Windows.Forms.Button();
             this.btnDiscount = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.layoutButton.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Panel1.Controls.Add(this.layoutButton);
             this.splitContainer1.Panel1.Controls.Add(this.tabControl);
             // 
             // splitContainer1.Panel2
@@ -166,26 +166,26 @@
             this.flowLayoutPanelRight.Size = new System.Drawing.Size(150, 245);
             this.flowLayoutPanelRight.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // layoutButton
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.layoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.3247F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
-            this.tableLayoutPanel1.Controls.Add(this.btnVAT, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnExtra, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnDiscount, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnChangeTable, 3, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 287);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(533, 40);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.layoutButton.ColumnCount = 4;
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.3247F));
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
+            this.layoutButton.Controls.Add(this.btnVAT, 0, 0);
+            this.layoutButton.Controls.Add(this.btnExtra, 1, 0);
+            this.layoutButton.Controls.Add(this.btnDiscount, 2, 0);
+            this.layoutButton.Controls.Add(this.btnChangeTable, 3, 0);
+            this.layoutButton.Location = new System.Drawing.Point(3, 287);
+            this.layoutButton.Margin = new System.Windows.Forms.Padding(0);
+            this.layoutButton.Name = "layoutButton";
+            this.layoutButton.RowCount = 1;
+            this.layoutButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutButton.Size = new System.Drawing.Size(533, 40);
+            this.layoutButton.TabIndex = 7;
             // 
             // btnVAT
             // 
@@ -275,7 +275,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.layoutButton.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -293,7 +293,7 @@
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Label lbTable;
         private System.Windows.Forms.Label lbArea;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel layoutButton;
         private System.Windows.Forms.Button btnVAT;
         private System.Windows.Forms.Button btnExtra;
         private System.Windows.Forms.Button btnDiscount;
