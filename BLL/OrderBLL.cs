@@ -45,7 +45,7 @@ namespace BLL
         public void AddDiscount(Order order , int discount , byte discountType)
         {
             order.Discount = discount;
-            order.DiscountType = discountType;
+            order.DiscountType = discountType; // 1 : Cash  2 : Percent
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
         }

@@ -201,5 +201,11 @@ namespace GUI.StaffWorking
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            new AddDiscountDialog(order).ShowDialog();
+        }
     }
 }
