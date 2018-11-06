@@ -42,6 +42,14 @@ namespace BLL
             return order;
         }
 
+        public void AddDiscount(Order order , int discount , byte discountType)
+        {
+            order.Discount = discount;
+            order.DiscountType = discountType;
+            Connection.DBContext.Orders.AddOrUpdate(order);
+            Connection.DBContext.SaveChanges();
+        }
+
         public Order GetCurrentOrderByTable(Table table)
         {
             var orders = Connection.DBContext.Orders.Where(o => o.OrderTables.Where(ot => ot.TableID == table.ID).Count() > 0).ToList();
@@ -53,5 +61,7 @@ namespace BLL
             Connection.DBContext.OrderDetails.AddRange(orderDetails);
             Connection.DBContext.SaveChangesAsync();
         }
+
+
     }
 }
