@@ -109,6 +109,8 @@ namespace GUI.StaffWorking
                     menuItemControl.Click += new EventHandler(this.MenuItem_OnClick);
                 }
             }
+
+            
         }
 
         private string getTableName()
