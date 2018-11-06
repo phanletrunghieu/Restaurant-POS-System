@@ -65,22 +65,25 @@ namespace GUI.StaffWorking
             TableControl tableControl = (TableControl)sender;
             Area area = (Area)tableControl.Tag;
             CreateOrder createOrder = new CreateOrder(tableControl.Table, area);
-            createOrder.ShowDialog();
+            DialogResult dr = createOrder.ShowDialog();
 
             //update table status
-            var tps = this.tabControl.Controls.OfType<TabPage>().ToList();
-            foreach(TabPage tp in tps)
+            if(dr == DialogResult.OK)
             {
-                var layout = tp.Controls.OfType<FlowLayoutPanel>().ToList()[0];
-                var tcs = layout.Controls.OfType<TableControl>();
-                foreach(TableControl tc in tcs)
+                var tps = this.tabControl.Controls.OfType<TabPage>().ToList();
+                foreach (TabPage tp in tps)
                 {
-                    var tt = createOrder.Tables.Where(t => t.ID == tc.Table.ID).ToList();
-                    if(tt.Count > 0)
+                    var layout = tp.Controls.OfType<FlowLayoutPanel>().ToList()[0];
+                    var tcs = layout.Controls.OfType<TableControl>();
+                    foreach (TableControl tc in tcs)
                     {
-                        var tb = tc.Table;
-                        tb.Status = 1;
-                        tc.Table = tb;
+                        var tt = createOrder.Tables.Where(t => t.ID == tc.Table.ID).ToList();
+                        if (tt.Count > 0)
+                        {
+                            var tb = tc.Table;
+                            tb.Status = 1;
+                            tc.Table = tb;
+                        }
                     }
                 }
             }

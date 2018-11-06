@@ -11,35 +11,26 @@ namespace BLL
     {
         public List<Area> ListArea()
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.Areas.ToList();
-            }
+            return Connection.DBContext.Areas.ToList();
         }
 
         public Area CreateArea(string name)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                Area area = new Area { Name = name };
-                model.Areas.Add(area);
-                model.SaveChanges();
-                return area;
-            }
+            Area area = new Area { Name = name };
+            Connection.DBContext.Areas.Add(area);
+            Connection.DBContext.SaveChanges();
+            return area;
         }
 
         public Area Delete(Area area)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Areas.Attach(area);
+            Connection.DBContext.Areas.Attach(area);
 
-                //delete tables in this area
-                model.Tables.RemoveRange(area.Tables);
-                model.Areas.Remove(area);
-                model.SaveChanges();
-                return area;
-            }
+            //delete tables in this area
+            Connection.DBContext.Tables.RemoveRange(area.Tables);
+            Connection.DBContext.Areas.Remove(area);
+            Connection.DBContext.SaveChanges();
+            return area;
         }
     }
 }

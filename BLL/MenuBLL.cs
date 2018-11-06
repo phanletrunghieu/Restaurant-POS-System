@@ -12,46 +12,34 @@ namespace BLL
     {
         public List<Menu> ListMenu()
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.Menus.ToList();
-            }
+            return Connection.DBContext.Menus.ToList();
         }
 
         public Menu CreateMenu(string name)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                Menu menu = new Menu { Name = name };
-                model.Menus.Add(menu);
-                model.SaveChanges();
-                return menu;
-            }
+            Menu menu = new Menu { Name = name };
+            Connection.DBContext.Menus.Add(menu);
+            Connection.DBContext.SaveChanges();
+            return menu;
         }
 
         public Menu Delete(Menu menu)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Menus.Attach(menu);
+            Connection.DBContext.Menus.Attach(menu);
 
-                //delete tables in this area
-                model.MenuItems.RemoveRange(menu.MenuItems);
-                model.Menus.Remove(menu);
-                model.SaveChanges();
-                return menu;
-            }
+            //delete tables in this area
+            Connection.DBContext.MenuItems.RemoveRange(menu.MenuItems);
+            Connection.DBContext.Menus.Remove(menu);
+            Connection.DBContext.SaveChanges();
+            return menu;
         }
 
         public void Update(Menu menu, string name)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Menus.Attach(menu);
-                menu.Name = name;
-                model.Menus.AddOrUpdate(menu);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Menus.Attach(menu);
+            menu.Name = name;
+            Connection.DBContext.Menus.AddOrUpdate(menu);
+            Connection.DBContext.SaveChanges();
         }
     }
 }

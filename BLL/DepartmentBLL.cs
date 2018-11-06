@@ -12,39 +12,27 @@ namespace BLL
     {
         public List<Department> ListDepartment()
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.Departments.ToList();
-            }
+            return Connection.DBContext.Departments.ToList();
         }
         public Department CreateDepartment(string name)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                Department department = new Department { Name = name };
-                model.Departments.Add(department);
-                model.SaveChanges();
-                return department;
-            }
+            Department department = new Department { Name = name };
+            Connection.DBContext.Departments.Add(department);
+            Connection.DBContext.SaveChanges();
+            return department;
         }
 
         public void DeleteDepartment(Department department)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Departments.Attach(department);
-                model.Departments.Remove(department);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Departments.Attach(department);
+            Connection.DBContext.Departments.Remove(department);
+            Connection.DBContext.SaveChanges();
         }
 
         public void Update(Department department)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.Departments.AddOrUpdate(department);
-                model.SaveChanges();
-            }
+            Connection.DBContext.Departments.AddOrUpdate(department);
+            Connection.DBContext.SaveChanges();
         }
     }
 }

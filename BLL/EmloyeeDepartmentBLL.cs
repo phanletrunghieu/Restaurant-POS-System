@@ -13,39 +13,27 @@ namespace BLL
       
         public EmployeeDepartment CreateEmployeeDepartment(EmployeeDepartment employeeDepartment)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.EmployeeDepartments.Add(employeeDepartment);
-                model.SaveChanges();
-                return employeeDepartment;
-            }
+            Connection.DBContext.EmployeeDepartments.Add(employeeDepartment);
+            Connection.DBContext.SaveChanges();
+            return employeeDepartment;
         }
 
         public void Delete(EmployeeDepartment employeeDepartment)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.EmployeeDepartments.Attach(employeeDepartment);
-                model.EmployeeDepartments.Remove(employeeDepartment);
-                model.SaveChanges();
-            }
+            Connection.DBContext.EmployeeDepartments.Attach(employeeDepartment);
+            Connection.DBContext.EmployeeDepartments.Remove(employeeDepartment);
+            Connection.DBContext.SaveChanges();
         }
 
         public void Update(EmployeeDepartment employeeDepartment)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.EmployeeDepartments.AddOrUpdate(employeeDepartment);
-                model.SaveChanges();
-            }
+            Connection.DBContext.EmployeeDepartments.AddOrUpdate(employeeDepartment);
+            Connection.DBContext.SaveChanges();
         }
 
         public List<EmployeeDepartment> ListEmployeeDepartmentByDepartment(Department department)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.EmployeeDepartments.Where(t => t.DepartmentID == department.ID).ToList();
-            }
+            return Connection.DBContext.EmployeeDepartments.Where(t => t.DepartmentID == department.ID).ToList();
         }
     }
 }

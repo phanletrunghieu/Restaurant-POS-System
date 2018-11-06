@@ -12,41 +12,29 @@ namespace BLL
     {
         public List<MenuItem> FindByMenuID(Menu menu)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                return model.MenuItems.Where(m => m.MenuID == menu.ID).ToList();
-            }
+            return Connection.DBContext.MenuItems.Where(m => m.MenuID == menu.ID).ToList();
         }
 
         public MenuItem CreateMenuItem(MenuItem menuItem)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.MenuItems.Add(menuItem);
-                model.SaveChanges();
-                return menuItem;
-            }
+            Connection.DBContext.MenuItems.Add(menuItem);
+            Connection.DBContext.SaveChanges();
+            return menuItem;
         }
 
         public void Update(MenuItem oldMenuItem, MenuItem newMenuItem)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.MenuItems.Attach(oldMenuItem);
-                newMenuItem.ID = oldMenuItem.ID;
-                model.MenuItems.AddOrUpdate(newMenuItem);
-                model.SaveChanges();
-            }
+            Connection.DBContext.MenuItems.Attach(oldMenuItem);
+            newMenuItem.ID = oldMenuItem.ID;
+            Connection.DBContext.MenuItems.AddOrUpdate(newMenuItem);
+            Connection.DBContext.SaveChanges();
         }
 
         public void Delete(MenuItem menuItem)
         {
-            using (MyDBContext model = new MyDBContext())
-            {
-                model.MenuItems.Attach(menuItem);
-                model.MenuItems.Remove(menuItem);
-                model.SaveChanges();
-            }
+            Connection.DBContext.MenuItems.Attach(menuItem);
+            Connection.DBContext.MenuItems.Remove(menuItem);
+            Connection.DBContext.SaveChanges();
         }
     }
 }
