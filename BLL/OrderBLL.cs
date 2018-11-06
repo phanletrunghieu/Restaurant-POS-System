@@ -50,6 +50,14 @@ namespace BLL
             Connection.DBContext.SaveChanges();
         }
 
+        public void AddExtra(Order order, int extra, String content)
+        {
+            order.Extra = extra;
+            order.ExtraContent = content;
+            Connection.DBContext.Orders.AddOrUpdate(order);
+            Connection.DBContext.SaveChanges();
+        }
+
         public Order GetCurrentOrderByTable(Table table)
         {
             var orders = Connection.DBContext.Orders.Where(o => o.OrderTables.Where(ot => ot.TableID == table.ID).Count() > 0).ToList();
