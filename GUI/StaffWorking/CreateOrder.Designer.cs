@@ -37,11 +37,20 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelRight = new System.Windows.Forms.FlowLayoutPanel();
+            this.layoutButton = new System.Windows.Forms.TableLayoutPanel();
+            this.btnVAT = new System.Windows.Forms.Button();
+            this.btnExtra = new System.Windows.Forms.Button();
+            this.btnDiscount = new System.Windows.Forms.Button();
+            this.btnChangeTable = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPay = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.layoutButton.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -52,18 +61,21 @@
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(3, 3);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Name = "tabControl";
+            this.tabControl.Padding = new System.Drawing.Point(0, 0);
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(495, 321);
+            this.tabControl.Size = new System.Drawing.Size(533, 284);
             this.tabControl.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(487, 288);
+            this.tabPage1.Size = new System.Drawing.Size(525, 251);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -72,29 +84,31 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.layoutButton);
             this.splitContainer1.Panel1.Controls.Add(this.tabControl);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.lbArea);
             this.splitContainer1.Panel2.Controls.Add(this.lbTable);
-            this.splitContainer1.Panel2.Controls.Add(this.btnOrder);
             this.splitContainer1.Panel2.Controls.Add(this.txtCustomerName);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelRight);
-            this.splitContainer1.Size = new System.Drawing.Size(644, 327);
-            this.splitContainer1.SplitterDistance = 501;
+            this.splitContainer1.Size = new System.Drawing.Size(693, 327);
+            this.splitContainer1.SplitterDistance = 539;
             this.splitContainer1.TabIndex = 1;
             // 
             // lbArea
             // 
             this.lbArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbArea.AutoSize = true;
-            this.lbArea.Location = new System.Drawing.Point(101, 26);
+            this.lbArea.Location = new System.Drawing.Point(112, 26);
             this.lbArea.Name = "lbArea";
             this.lbArea.Size = new System.Drawing.Size(32, 13);
             this.lbArea.TabIndex = 5;
@@ -111,10 +125,12 @@
             // 
             // btnOrder
             // 
-            this.btnOrder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOrder.Location = new System.Drawing.Point(40, 292);
+            this.btnOrder.AutoSize = true;
+            this.btnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOrder.Location = new System.Drawing.Point(0, 0);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(0);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnOrder.Size = new System.Drawing.Size(75, 38);
             this.btnOrder.TabIndex = 3;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
@@ -126,7 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCustomerName.Location = new System.Drawing.Point(40, 3);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(96, 20);
+            this.txtCustomerName.Size = new System.Drawing.Size(107, 20);
             this.txtCustomerName.TabIndex = 2;
             this.txtCustomerName.Text = "Khách lẻ";
             // 
@@ -147,14 +163,106 @@
             this.flowLayoutPanelRight.AutoScroll = true;
             this.flowLayoutPanelRight.Location = new System.Drawing.Point(0, 42);
             this.flowLayoutPanelRight.Name = "flowLayoutPanelRight";
-            this.flowLayoutPanelRight.Size = new System.Drawing.Size(139, 245);
+            this.flowLayoutPanelRight.Size = new System.Drawing.Size(150, 245);
             this.flowLayoutPanelRight.TabIndex = 0;
+            // 
+            // layoutButton
+            // 
+            this.layoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutButton.ColumnCount = 4;
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.3247F));
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
+            this.layoutButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.89177F));
+            this.layoutButton.Controls.Add(this.btnVAT, 0, 0);
+            this.layoutButton.Controls.Add(this.btnExtra, 1, 0);
+            this.layoutButton.Controls.Add(this.btnDiscount, 2, 0);
+            this.layoutButton.Controls.Add(this.btnChangeTable, 3, 0);
+            this.layoutButton.Location = new System.Drawing.Point(3, 287);
+            this.layoutButton.Margin = new System.Windows.Forms.Padding(0);
+            this.layoutButton.Name = "layoutButton";
+            this.layoutButton.RowCount = 1;
+            this.layoutButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutButton.Size = new System.Drawing.Size(533, 40);
+            this.layoutButton.TabIndex = 7;
+            // 
+            // btnVAT
+            // 
+            this.btnVAT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnVAT.Location = new System.Drawing.Point(0, 0);
+            this.btnVAT.Margin = new System.Windows.Forms.Padding(0);
+            this.btnVAT.Name = "btnVAT";
+            this.btnVAT.Size = new System.Drawing.Size(150, 40);
+            this.btnVAT.TabIndex = 0;
+            this.btnVAT.Text = "Add VAT";
+            this.btnVAT.UseVisualStyleBackColor = true;
+            // 
+            // btnExtra
+            // 
+            this.btnExtra.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExtra.Location = new System.Drawing.Point(150, 0);
+            this.btnExtra.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExtra.Name = "btnExtra";
+            this.btnExtra.Size = new System.Drawing.Size(127, 40);
+            this.btnExtra.TabIndex = 1;
+            this.btnExtra.Text = "Add extra";
+            this.btnExtra.UseVisualStyleBackColor = true;
+            // 
+            // btnDiscount
+            // 
+            this.btnDiscount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDiscount.Location = new System.Drawing.Point(277, 0);
+            this.btnDiscount.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDiscount.Name = "btnDiscount";
+            this.btnDiscount.Size = new System.Drawing.Size(127, 40);
+            this.btnDiscount.TabIndex = 2;
+            this.btnDiscount.Text = "Discount";
+            this.btnDiscount.UseVisualStyleBackColor = true;
+            // 
+            // btnChangeTable
+            // 
+            this.btnChangeTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnChangeTable.Location = new System.Drawing.Point(404, 0);
+            this.btnChangeTable.Margin = new System.Windows.Forms.Padding(0);
+            this.btnChangeTable.Name = "btnChangeTable";
+            this.btnChangeTable.Size = new System.Drawing.Size(129, 40);
+            this.btnChangeTable.TabIndex = 3;
+            this.btnChangeTable.Text = "Change table";
+            this.btnChangeTable.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.btnOrder, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnPay, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 289);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(150, 38);
+            this.tableLayoutPanel2.TabIndex = 6;
+            // 
+            // btnPay
+            // 
+            this.btnPay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPay.Location = new System.Drawing.Point(75, 0);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(75, 38);
+            this.btnPay.TabIndex = 4;
+            this.btnPay.Text = "Pay";
+            this.btnPay.UseVisualStyleBackColor = true;
             // 
             // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 327);
+            this.ClientSize = new System.Drawing.Size(693, 327);
             this.Controls.Add(this.splitContainer1);
             this.Name = "CreateOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -167,6 +275,9 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.layoutButton.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -182,5 +293,12 @@
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Label lbTable;
         private System.Windows.Forms.Label lbArea;
+        private System.Windows.Forms.TableLayoutPanel layoutButton;
+        private System.Windows.Forms.Button btnVAT;
+        private System.Windows.Forms.Button btnExtra;
+        private System.Windows.Forms.Button btnDiscount;
+        private System.Windows.Forms.Button btnChangeTable;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnPay;
     }
 }
