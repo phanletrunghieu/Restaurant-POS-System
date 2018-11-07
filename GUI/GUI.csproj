@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDiscountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDiscountDialog.Designer.cs">
+      <DependentUpon>AddDiscountDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetup\Menu\AddMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
       <DependentUpon>TableEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\UtilsImage.cs" />
+    <EmbeddedResource Include="AddDiscountDialog.resx">
+      <DependentUpon>AddDiscountDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\MenuItemControl.resx">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -31,19 +31,19 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbArea = new System.Windows.Forms.Label();
-            this.lbTable = new System.Windows.Forms.Label();
-            this.btnOrder = new System.Windows.Forms.Button();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelRight = new System.Windows.Forms.FlowLayoutPanel();
             this.layoutButton = new System.Windows.Forms.TableLayoutPanel();
             this.btnVAT = new System.Windows.Forms.Button();
             this.btnExtra = new System.Windows.Forms.Button();
             this.btnDiscount = new System.Windows.Forms.Button();
             this.btnChangeTable = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOrder = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
+            this.lbArea = new System.Windows.Forms.Label();
+            this.lbTable = new System.Windows.Forms.Label();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanelRight = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -104,68 +104,6 @@
             this.splitContainer1.SplitterDistance = 539;
             this.splitContainer1.TabIndex = 1;
             // 
-            // lbArea
-            // 
-            this.lbArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbArea.AutoSize = true;
-            this.lbArea.Location = new System.Drawing.Point(112, 26);
-            this.lbArea.Name = "lbArea";
-            this.lbArea.Size = new System.Drawing.Size(32, 13);
-            this.lbArea.TabIndex = 5;
-            this.lbArea.Text = "Area:";
-            // 
-            // lbTable
-            // 
-            this.lbTable.AutoSize = true;
-            this.lbTable.Location = new System.Drawing.Point(3, 26);
-            this.lbTable.Name = "lbTable";
-            this.lbTable.Size = new System.Drawing.Size(37, 13);
-            this.lbTable.TabIndex = 4;
-            this.lbTable.Text = "Table:";
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.AutoSize = true;
-            this.btnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOrder.Location = new System.Drawing.Point(0, 0);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(75, 38);
-            this.btnOrder.TabIndex = 3;
-            this.btnOrder.Text = "Order";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCustomerName.Location = new System.Drawing.Point(40, 3);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(107, 20);
-            this.txtCustomerName.TabIndex = 2;
-            this.txtCustomerName.Text = "Khách lẻ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Guest:";
-            // 
-            // flowLayoutPanelRight
-            // 
-            this.flowLayoutPanelRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelRight.AutoScroll = true;
-            this.flowLayoutPanelRight.Location = new System.Drawing.Point(0, 42);
-            this.flowLayoutPanelRight.Name = "flowLayoutPanelRight";
-            this.flowLayoutPanelRight.Size = new System.Drawing.Size(150, 245);
-            this.flowLayoutPanelRight.TabIndex = 0;
-            // 
             // layoutButton
             // 
             this.layoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -217,8 +155,9 @@
             this.btnDiscount.Name = "btnDiscount";
             this.btnDiscount.Size = new System.Drawing.Size(127, 40);
             this.btnDiscount.TabIndex = 2;
-            this.btnDiscount.Text = "Discount";
+            this.btnDiscount.Text = "Add Discount";
             this.btnDiscount.UseVisualStyleBackColor = true;
+            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
             // 
             // btnChangeTable
             // 
@@ -247,6 +186,19 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(150, 38);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
+            // btnOrder
+            // 
+            this.btnOrder.AutoSize = true;
+            this.btnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOrder.Location = new System.Drawing.Point(0, 0);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(75, 38);
+            this.btnOrder.TabIndex = 3;
+            this.btnOrder.Text = "Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
             // btnPay
             // 
             this.btnPay.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -257,6 +209,55 @@
             this.btnPay.TabIndex = 4;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
+            // 
+            // lbArea
+            // 
+            this.lbArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbArea.AutoSize = true;
+            this.lbArea.Location = new System.Drawing.Point(112, 26);
+            this.lbArea.Name = "lbArea";
+            this.lbArea.Size = new System.Drawing.Size(32, 13);
+            this.lbArea.TabIndex = 5;
+            this.lbArea.Text = "Area:";
+            // 
+            // lbTable
+            // 
+            this.lbTable.AutoSize = true;
+            this.lbTable.Location = new System.Drawing.Point(3, 26);
+            this.lbTable.Name = "lbTable";
+            this.lbTable.Size = new System.Drawing.Size(37, 13);
+            this.lbTable.TabIndex = 4;
+            this.lbTable.Text = "Table:";
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerName.Location = new System.Drawing.Point(40, 3);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(107, 20);
+            this.txtCustomerName.TabIndex = 2;
+            this.txtCustomerName.Text = "Khách lẻ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Guest:";
+            // 
+            // flowLayoutPanelRight
+            // 
+            this.flowLayoutPanelRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelRight.AutoScroll = true;
+            this.flowLayoutPanelRight.Location = new System.Drawing.Point(0, 42);
+            this.flowLayoutPanelRight.Name = "flowLayoutPanelRight";
+            this.flowLayoutPanelRight.Size = new System.Drawing.Size(150, 245);
+            this.flowLayoutPanelRight.TabIndex = 0;
             // 
             // CreateOrder
             // 
