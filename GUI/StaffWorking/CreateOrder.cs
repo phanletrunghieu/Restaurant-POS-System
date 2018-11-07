@@ -29,6 +29,27 @@ namespace GUI.StaffWorking
             }
         }
 
+        private decimal foodPrice;
+        public decimal FoodPrice
+        {
+            get { return foodPrice; }
+            set
+            {
+                foodPrice = value;
+                this.lbFoodPrice.Text = string.Format("{0:0}", foodPrice) + "đ";
+            }
+        }
+        private decimal totalPrice;
+        public decimal TotalPrice
+        {
+            get { return totalPrice; }
+            set
+            {
+                totalPrice = value;
+                this.lbTotal.Text = string.Format("{0:0}", totalPrice) + "đ";
+            }
+        }
+
         private List<SelectMenuItemControl> SelectedMenuItems = new List<SelectMenuItemControl>();
 
         public CreateOrder()
@@ -74,6 +95,8 @@ namespace GUI.StaffWorking
                         this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, true);
                     }
                 }
+
+                this.calculateFoodPrice();
             }
 
             // Load menu
@@ -132,6 +155,47 @@ namespace GUI.StaffWorking
             return res;
         }
 
+        private void calculateFoodPrice()
+        {
+            decimal price = 0;
+            List<SelectMenuItemControl> listControls = this.flowLayoutPanelRight.Controls.OfType<SelectMenuItemControl>().ToList();
+            foreach(var control in listControls)
+            {
+                var p = control.MenuItem.Price == null ? 0 : (decimal)control.MenuItem.Price;
+                price += p * control.Quantity;
+            }
+
+            this.FoodPrice = price;
+
+            this.calculateTotalPrice();
+        }
+
+        private void calculateTotalPrice()
+        {
+            decimal price = this.FoodPrice;
+
+            // discount
+            decimal discount = 0;
+            if (this.order.Discount != null)
+            {
+                if(this.order.DiscountType==1)
+                    discount = (decimal)this.order.Discount;
+                else
+                    discount = price * (decimal)this.order.Discount/100;
+            }
+            price -= discount;
+
+            // extra
+            if (this.order.Extra != null)
+                price += (decimal)this.order.Extra;
+
+            // vat
+            if (this.order.VAT != null)
+                price += price * (decimal)this.order.VAT / 100;
+
+            this.TotalPrice = price;
+        }
+
         private void MenuItem_OnClick(object sender, EventArgs e)
         {
             MenuItemControl menuItemControl = (MenuItemControl)sender;
@@ -147,6 +211,8 @@ namespace GUI.StaffWorking
             {
                 this.NewSelectMenuItem(menuItem, 1);
             }
+
+            this.calculateFoodPrice();
         }
 
         private void NewSelectMenuItem(DAL.MenuItem menuItem, int quantity = 1, bool readOnly = false)
@@ -210,6 +276,16 @@ namespace GUI.StaffWorking
         private void btnExtra_Click(object sender, EventArgs e)
         {
             new AddExtraDialog(order).ShowDialog();
+	}
+        
+	private void btnVAT_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = new AddVAT(this.order).ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                // update VAT in UI
+                lbVAT.Text = this.order.VAT.ToString() + "%";
+            }
         }
     }
 }
