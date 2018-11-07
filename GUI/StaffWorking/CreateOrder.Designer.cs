@@ -36,6 +36,16 @@
             this.btnExtra = new System.Windows.Forms.Button();
             this.btnDiscount = new System.Windows.Forms.Button();
             this.btnChangeTable = new System.Windows.Forms.Button();
+            this.lbFoodPrice = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbExtra = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbDiscount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbVAT = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
@@ -94,6 +104,16 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.lbExtra);
+            this.splitContainer1.Panel2.Controls.Add(this.lbFoodPrice);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.label6);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTotal);
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
+            this.splitContainer1.Panel2.Controls.Add(this.lbDiscount);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
+            this.splitContainer1.Panel2.Controls.Add(this.lbVAT);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.lbArea);
             this.splitContainer1.Panel2.Controls.Add(this.lbTable);
@@ -135,6 +155,7 @@
             this.btnVAT.TabIndex = 0;
             this.btnVAT.Text = "Add VAT";
             this.btnVAT.UseVisualStyleBackColor = true;
+            this.btnVAT.Click += new System.EventHandler(this.btnVAT_Click);
             // 
             // btnExtra
             // 
@@ -170,6 +191,114 @@
             this.btnChangeTable.TabIndex = 3;
             this.btnChangeTable.Text = "Change table";
             this.btnChangeTable.UseVisualStyleBackColor = true;
+            // 
+            // lbFoodPrice
+            // 
+            this.lbFoodPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbFoodPrice.AutoSize = true;
+            this.lbFoodPrice.Location = new System.Drawing.Point(93, 209);
+            this.lbFoodPrice.Name = "lbFoodPrice";
+            this.lbFoodPrice.Size = new System.Drawing.Size(44, 13);
+            this.lbFoodPrice.TabIndex = 15;
+            this.lbFoodPrice.Text = "10000đ";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(59, 209);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Food";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Location = new System.Drawing.Point(93, 271);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(50, 13);
+            this.lbTotal.TabIndex = 13;
+            this.lbTotal.Text = "200000đ";
+            this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(59, 271);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Total";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbExtra
+            // 
+            this.lbExtra.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbExtra.AutoSize = true;
+            this.lbExtra.Location = new System.Drawing.Point(93, 242);
+            this.lbExtra.Name = "lbExtra";
+            this.lbExtra.Size = new System.Drawing.Size(44, 13);
+            this.lbExtra.TabIndex = 11;
+            this.lbExtra.Text = "20000đ";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(59, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Extra";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbDiscount
+            // 
+            this.lbDiscount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbDiscount.AutoSize = true;
+            this.lbDiscount.Location = new System.Drawing.Point(94, 226);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(21, 13);
+            this.lbDiscount.TabIndex = 9;
+            this.lbDiscount.Text = "5%";
+            this.lbDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(42, 226);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Discount";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbVAT
+            // 
+            this.lbVAT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbVAT.AutoSize = true;
+            this.lbVAT.Location = new System.Drawing.Point(93, 256);
+            this.lbVAT.Name = "lbVAT";
+            this.lbVAT.Size = new System.Drawing.Size(21, 13);
+            this.lbVAT.TabIndex = 7;
+            this.lbVAT.Text = "0%";
+            this.lbVAT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(62, 256);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "VAT";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel2
             // 
@@ -257,7 +386,7 @@
             this.flowLayoutPanelRight.AutoScroll = true;
             this.flowLayoutPanelRight.Location = new System.Drawing.Point(0, 42);
             this.flowLayoutPanelRight.Name = "flowLayoutPanelRight";
-            this.flowLayoutPanelRight.Size = new System.Drawing.Size(150, 245);
+            this.flowLayoutPanelRight.Size = new System.Drawing.Size(150, 164);
             this.flowLayoutPanelRight.TabIndex = 0;
             // 
             // CreateOrder
@@ -302,5 +431,15 @@
         private System.Windows.Forms.Button btnChangeTable;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnPay;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbVAT;
+        private System.Windows.Forms.Label lbDiscount;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbExtra;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbFoodPrice;
+        private System.Windows.Forms.Label label6;
     }
 }

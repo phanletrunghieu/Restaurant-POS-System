@@ -70,6 +70,11 @@ namespace BLL
             Connection.DBContext.SaveChangesAsync();
         }
 
-
+        public void AddVAT(Order order, decimal vat)
+        {
+            order.VAT = vat;
+            Connection.DBContext.Orders.AddOrUpdate(order);
+            Connection.DBContext.SaveChanges();
+        }
     }
 }

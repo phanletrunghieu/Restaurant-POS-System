@@ -68,6 +68,12 @@
     <Compile Include="AddExtraDialog.Designer.cs">
       <DependentUpon>AddExtraDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffWorking\AddVAT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\AddVAT.Designer.cs">
+      <DependentUpon>AddVAT.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetup\Menu\AddMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\SelectMenuItemControl.resx">
       <DependentUpon>SelectMenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\AddVAT.resx">
+      <DependentUpon>AddVAT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffWorking\CreateOrder.resx">
       <DependentUpon>CreateOrder.cs</DependentUpon>
