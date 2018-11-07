@@ -204,8 +204,12 @@ namespace GUI.StaffWorking
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
             new AddDiscountDialog(order).ShowDialog();
+        }
+
+        private void btnExtra_Click(object sender, EventArgs e)
+        {
+            new AddExtraDialog(order).ShowDialog();
         }
     }
 }

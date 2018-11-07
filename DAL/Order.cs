@@ -42,7 +42,7 @@ namespace DAL
 
         public int? Extra { get; set; }
 
-        public byte? ExtraType { get; set; }
+        public String ExtraContent { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? PriceBefore { get; set; }

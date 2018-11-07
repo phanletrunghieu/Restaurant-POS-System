@@ -146,6 +146,7 @@
             this.btnExtra.TabIndex = 1;
             this.btnExtra.Text = "Add extra";
             this.btnExtra.UseVisualStyleBackColor = true;
+            this.btnExtra.Click += new System.EventHandler(this.btnExtra_Click);
             // 
             // btnDiscount
             // 
