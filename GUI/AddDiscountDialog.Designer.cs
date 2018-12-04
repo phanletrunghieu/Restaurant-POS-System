@@ -70,6 +70,7 @@
             // rbPercent
             // 
             this.rbPercent.AutoSize = true;
+            this.rbPercent.Checked = true;
             this.rbPercent.Location = new System.Drawing.Point(12, 48);
             this.rbPercent.Name = "rbPercent";
             this.rbPercent.Size = new System.Drawing.Size(144, 17);
@@ -86,7 +87,6 @@
             this.rbCash.Name = "rbCash";
             this.rbCash.Size = new System.Drawing.Size(123, 17);
             this.rbCash.TabIndex = 23;
-            this.rbCash.TabStop = true;
             this.rbCash.Text = "Cash Discount(VNĐ)";
             this.rbCash.UseVisualStyleBackColor = true;
             this.rbCash.CheckedChanged += new System.EventHandler(this.rbCash_CheckedChanged);

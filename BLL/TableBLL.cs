@@ -15,6 +15,11 @@ namespace BLL
             return Connection.DBContext.Tables.Where(t => t.AreaID == area.ID).ToList();
         }
 
+        public List<Table> ListAvailableTables()
+        {
+            return Connection.DBContext.Tables.Where(t => t.Status == 0).ToList();
+        }
+
         public Table CreateTable(Table table)
         {
             Connection.DBContext.Tables.Add(table);

@@ -15,6 +15,7 @@ namespace GUI.StaffWorking
 {
     public partial class CreateOrder : Form
     {
+        public List<Table> OldTables;// use for reset table status (change table)
         public List<Table> Tables;
         private Order order; // if booked
 
@@ -37,6 +38,40 @@ namespace GUI.StaffWorking
             {
                 foodPrice = value;
                 this.lbFoodPrice.Text = string.Format("{0:0}", foodPrice) + "đ";
+                this.calculateTotalPrice();
+            }
+        }
+        private decimal discount;
+        public decimal Discount
+        {
+            get { return discount; }
+            set
+            {
+                discount = value;
+                this.lbDiscount.Text = string.Format("{0:0}", discount) + "đ";
+                this.calculateTotalPrice();
+            }
+        }
+        private decimal extra;
+        public decimal Extra
+        {
+            get { return extra; }
+            set
+            {
+                extra = value;
+                this.lbExtra.Text = string.Format("{0:0}", extra) + "đ";
+                this.calculateTotalPrice();
+            }
+        }
+        private decimal vat;
+        public decimal VAT
+        {
+            get { return vat; }
+            set
+            {
+                vat = value;
+                this.lbVAT.Text = string.Format("{0:0}", vat) + "% (" + string.Format("{0:0}", (this.FoodPrice - this.Discount + this.Extra)*vat/100) + "đ)";
+                this.calculateTotalPrice();
             }
         }
         private decimal totalPrice;
@@ -64,12 +99,14 @@ namespace GUI.StaffWorking
                     AreaID = 1
                 }
             };
+            this.OldTables = new List<Table>(this.Tables);
         }
 
         public CreateOrder(Table table, Area area)
         {
             InitializeComponent();
             this.Tables = new List<Table>{table};
+            this.OldTables = new List<Table>(this.Tables);
             this.Area = area;
         }
 
@@ -94,9 +131,23 @@ namespace GUI.StaffWorking
                     {
                         this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, true);
                     }
+
+                    // get order tables
+                    this.Tables.Clear();
+                    foreach(var od in this.order.OrderTables)
+                    {
+                        this.Tables.Add(od.Table);
+                    }
+                    this.OldTables = new List<Table>(this.Tables);
                 }
 
+                this.txtCustomerName.Text = this.order.CustomerName;
+
                 this.calculateFoodPrice();
+                this.calculateDiscount();
+                this.Extra = this.order.Extra == null ? 0 : (decimal)this.order.Extra;
+                if (this.order.VAT != null)
+                    this.VAT = (decimal)this.order.VAT;
             }
 
             // Load menu
@@ -166,32 +217,37 @@ namespace GUI.StaffWorking
             }
 
             this.FoodPrice = price;
+        }
 
-            this.calculateTotalPrice();
+        private void calculateDiscount()
+        {
+            if(this.order.Discount == null)
+            {
+                this.Discount = 0;
+                return;
+            }
+
+            decimal d = (decimal)this.order.Discount;
+            this.Discount = this.order.DiscountType == 1 ? d : (d* this.foodPrice / 100);
         }
 
         private void calculateTotalPrice()
         {
             decimal price = this.FoodPrice;
 
-            // discount
-            decimal discount = 0;
-            if (this.order.Discount != null)
+            if (this.order!=null)
             {
-                if(this.order.DiscountType==1)
-                    discount = (decimal)this.order.Discount;
-                else
-                    discount = price * (decimal)this.order.Discount/100;
+                // discount
+                price -= this.Discount;
+
+                // extra
+                if (this.order.Extra != null)
+                    price += (decimal)this.order.Extra;
+
+                // vat
+                if (this.order.VAT != null)
+                    price += price * (decimal)this.order.VAT / 100;
             }
-            price -= discount;
-
-            // extra
-            if (this.order.Extra != null)
-                price += (decimal)this.order.Extra;
-
-            // vat
-            if (this.order.VAT != null)
-                price += price * (decimal)this.order.VAT / 100;
 
             this.TotalPrice = price;
         }
@@ -270,13 +326,20 @@ namespace GUI.StaffWorking
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
-            new AddDiscountDialog(order).ShowDialog();
+            AddDiscountDialog addDiscountDialog = new AddDiscountDialog(order);
+            addDiscountDialog.ShowDialog();
+            if (addDiscountDialog.order != null)
+            {
+                this.order.Discount = addDiscountDialog.order.Discount;
+                this.order.DiscountType = addDiscountDialog.order.DiscountType;
+                this.calculateDiscount();
+            }
         }
 
         private void btnExtra_Click(object sender, EventArgs e)
         {
             new AddExtraDialog(order).ShowDialog();
-	}
+        }
         
 	private void btnVAT_Click(object sender, EventArgs e)
         {
@@ -284,8 +347,23 @@ namespace GUI.StaffWorking
             if (dr == DialogResult.OK)
             {
                 // update VAT in UI
-                lbVAT.Text = this.order.VAT.ToString() + "%";
+                if (this.order.VAT != null)
+                {
+                    this.VAT = (decimal)this.order.VAT;
+                }
+                else
+                {
+                    this.VAT = 0;
+                }
             }
+        }
+
+        private void btnChangeTable_Click(object sender, EventArgs e)
+        {
+            ChangeTable changeTable = new ChangeTable(this.order, this.Tables);
+            changeTable.ShowDialog();
+            this.Tables = changeTable.Tables;
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

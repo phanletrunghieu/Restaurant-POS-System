@@ -36,12 +36,12 @@
             this.btnExtra = new System.Windows.Forms.Button();
             this.btnDiscount = new System.Windows.Forms.Button();
             this.btnChangeTable = new System.Windows.Forms.Button();
+            this.lbExtra = new System.Windows.Forms.Label();
             this.lbFoodPrice = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbExtra = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.lbDiscount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lbVAT = new System.Windows.Forms.Label();
@@ -191,6 +191,17 @@
             this.btnChangeTable.TabIndex = 3;
             this.btnChangeTable.Text = "Change table";
             this.btnChangeTable.UseVisualStyleBackColor = true;
+            this.btnChangeTable.Click += new System.EventHandler(this.btnChangeTable_Click);
+            // 
+            // lbExtra
+            // 
+            this.lbExtra.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbExtra.AutoSize = true;
+            this.lbExtra.Location = new System.Drawing.Point(93, 242);
+            this.lbExtra.Name = "lbExtra";
+            this.lbExtra.Size = new System.Drawing.Size(20, 13);
+            this.lbExtra.TabIndex = 11;
+            this.lbExtra.Text = "0đ";
             // 
             // lbFoodPrice
             // 
@@ -201,6 +212,17 @@
             this.lbFoodPrice.Size = new System.Drawing.Size(44, 13);
             this.lbFoodPrice.TabIndex = 15;
             this.lbFoodPrice.Text = "10000đ";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(59, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Extra";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
@@ -235,27 +257,6 @@
             this.label5.Text = "Total";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbExtra
-            // 
-            this.lbExtra.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbExtra.AutoSize = true;
-            this.lbExtra.Location = new System.Drawing.Point(93, 242);
-            this.lbExtra.Name = "lbExtra";
-            this.lbExtra.Size = new System.Drawing.Size(44, 13);
-            this.lbExtra.TabIndex = 11;
-            this.lbExtra.Text = "20000đ";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 242);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Extra";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lbDiscount
             // 
             this.lbDiscount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -264,7 +265,7 @@
             this.lbDiscount.Name = "lbDiscount";
             this.lbDiscount.Size = new System.Drawing.Size(21, 13);
             this.lbDiscount.TabIndex = 9;
-            this.lbDiscount.Text = "5%";
+            this.lbDiscount.Text = "0%";
             this.lbDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4

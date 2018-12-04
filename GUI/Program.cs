@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.StaffWorking;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace GUI
             Application.SetCompatibleTextRenderingDefault(false);
             Login loginForm = new Login();
             DialogResult dr = loginForm.ShowDialog();
-            if(dr == DialogResult.OK)
+            if (dr == DialogResult.OK)
             {
                 Application.Run(new FeatureSelector());
             }

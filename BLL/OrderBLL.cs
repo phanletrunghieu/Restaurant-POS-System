@@ -42,12 +42,13 @@ namespace BLL
             return order;
         }
 
-        public void AddDiscount(Order order , int discount , byte discountType)
+        public Order AddDiscount(Order order , int discount , byte discountType)
         {
             order.Discount = discount;
             order.DiscountType = discountType; // 1 : Cash  2 : Percent
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
+            return order;
         }
 
         public void AddExtra(Order order, int extra, String content)
@@ -70,11 +71,38 @@ namespace BLL
             Connection.DBContext.SaveChangesAsync();
         }
 
-        public void AddVAT(Order order, decimal vat)
+        public void AddVAT(Order order, decimal? vat)
         {
             order.VAT = vat;
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
+        }
+
+        public Order ChangeTable(Order order, List<Table> tables)
+        {
+            foreach (OrderTable ot in order.OrderTables)
+            {
+                Table x = ot.Table;
+                x.Status = 0;
+                Connection.DBContext.Tables.AddOrUpdate(x);
+            }
+
+            order.OrderTables.Clear();
+            foreach (Table table in tables)
+            {
+                table.Status = 1;
+                Connection.DBContext.Tables.AddOrUpdate(table);
+                order.OrderTables.Add(
+                    new OrderTable
+                    {
+                        OrderID = order.ID,
+                        TableID = table.ID
+                    }
+                );
+            }
+            Connection.DBContext.Orders.AddOrUpdate(order);
+            Connection.DBContext.SaveChanges();
+            return order;
         }
     }
 }
