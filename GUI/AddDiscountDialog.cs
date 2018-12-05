@@ -14,7 +14,7 @@ namespace GUI
 {
     public partial class AddDiscountDialog : Form
     {
-        Order order;
+        public Order order;
         Byte typeDiscount;
 
         public AddDiscountDialog()
@@ -75,7 +75,7 @@ namespace GUI
                         {
                             typeDiscount = 2;
                             OrderBLL orderBLL = new OrderBLL();
-                            orderBLL.AddDiscount(order, Convert.ToInt32(tvDiscount.Value), typeDiscount);
+                            this.order = orderBLL.AddDiscount(order, Convert.ToInt32(tvDiscount.Value), typeDiscount);
                             this.Close();
                         }
                         else MessageBox.Show("The value you entered is not valid for a percentage!", "Warning", MessageBoxButtons.OK);
@@ -84,7 +84,7 @@ namespace GUI
                     {
                         typeDiscount = 1;
                         OrderBLL orderBLL = new OrderBLL();
-                        orderBLL.AddDiscount(order, Convert.ToInt32(tvDiscount.Value), typeDiscount);
+                        this.order = orderBLL.AddDiscount(order, Convert.ToInt32(tvDiscount.Value), typeDiscount);
                         this.Close();
                     }
 

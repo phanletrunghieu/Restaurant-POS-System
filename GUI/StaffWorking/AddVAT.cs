@@ -23,8 +23,12 @@ namespace GUI.StaffWorking
                 order = value;
                 if (order.VAT != null)
                 {
-                    if (!this.checkBox1.Checked)
+                    this.checkBox1.Checked = this.order.VAT == null;
+                    if (this.order.VAT != null)
+                    {
+                        this.checkBox1.Checked = false;
                         this.numericUpDown1.Value = (decimal)order.VAT;
+                    }
                 }
             }
         }
@@ -53,7 +57,14 @@ namespace GUI.StaffWorking
         private void btnSave_Click(object sender, EventArgs e)
         {
             OrderBLL orderBLL = new OrderBLL();
-            orderBLL.AddVAT(this.Order, this.numericUpDown1.Value);
+            if (this.checkBox1.Checked)
+            {
+                orderBLL.AddVAT(this.Order, null);
+            }
+            else
+            {
+                orderBLL.AddVAT(this.Order, this.numericUpDown1.Value);
+            }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

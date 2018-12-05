@@ -77,8 +77,18 @@ namespace GUI.StaffWorking
                     var tcs = layout.Controls.OfType<TableControl>();
                     foreach (TableControl tc in tcs)
                     {
-                        var tt = createOrder.Tables.Where(t => t.ID == tc.Table.ID).ToList();
-                        if (tt.Count > 0)
+                        // de-highlight old table
+                        var tt = createOrder.OldTables.Find(t => t.ID == tc.Table.ID);
+                        if (tt != null)
+                        {
+                            var tb = tc.Table;
+                            tb.Status = 0;
+                            tc.Table = tb;
+                        }
+
+                        // highlight old table
+                        tt = createOrder.Tables.Find(t => t.ID == tc.Table.ID);
+                        if (tt != null)
                         {
                             var tb = tc.Table;
                             tb.Status = 1;
