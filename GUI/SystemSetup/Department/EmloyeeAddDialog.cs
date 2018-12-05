@@ -10,16 +10,16 @@ using System.Windows.Forms;
 using BLL;
 using DAL;
 
-namespace GUI
+namespace GUI.SystemSetup.Department
 {
     public partial class EmloyeeAddDialog : Form
     {
-        Department department;
+        DAL.Department department;
         public EmloyeeAddDialog()
         {
             InitializeComponent();
         }
-        public EmloyeeAddDialog(Department department)
+        public EmloyeeAddDialog(DAL.Department department)
         {
             InitializeComponent();
             this.department = department; 

@@ -1,4 +1,6 @@
-﻿using GUI.SystemSetup.Menu;
+﻿using GUI.SystemSetup.Department;
+using GUI.SystemSetup.Menu;
+using GUI.SystemSetup.Seat;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,11 +28,6 @@ namespace GUI
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             new DepartmentSetup().Show();
-        }
-
-        private void RestaurantSetup_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnMenu_Click(object sender, EventArgs e)

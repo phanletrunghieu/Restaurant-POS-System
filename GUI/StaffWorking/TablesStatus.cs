@@ -68,7 +68,7 @@ namespace GUI.StaffWorking
             DialogResult dr = createOrder.ShowDialog();
 
             //update table status
-            if(dr == DialogResult.OK)
+            if(dr == DialogResult.OK || dr == DialogResult.Yes)
             {
                 var tps = this.tabControl.Controls.OfType<TabPage>().ToList();
                 foreach (TabPage tp in tps)
@@ -87,12 +87,16 @@ namespace GUI.StaffWorking
                         }
 
                         // highlight old table
-                        tt = createOrder.Tables.Find(t => t.ID == tc.Table.ID);
-                        if (tt != null)
+                        // DialogResult.Yes => order had finish
+                        if (dr != DialogResult.Yes)
                         {
-                            var tb = tc.Table;
-                            tb.Status = 1;
-                            tc.Table = tb;
+                            tt = createOrder.Tables.Find(t => t.ID == tc.Table.ID);
+                            if (tt != null)
+                            {
+                                var tb = tc.Table;
+                                tb.Status = 1;
+                                tc.Table = tb;
+                            }
                         }
                     }
                 }

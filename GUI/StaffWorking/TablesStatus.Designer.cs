@@ -63,6 +63,7 @@ namespace GUI.StaffWorking
             this.ClientSize = new System.Drawing.Size(535, 304);
             this.Controls.Add(this.tabControl);
             this.Name = "TablesStatus";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TablesStatus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

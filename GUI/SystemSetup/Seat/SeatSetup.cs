@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GUI
+namespace GUI.SystemSetup.Seat
 {
     public partial class SeatSetup : Form
     {
@@ -53,10 +53,20 @@ namespace GUI
                 btnAddTable.Click += new EventHandler(this.btnAddTable_Click);
                 t.Controls.Add(btnAddTable);
 
+                // button update area
+                Button btnUpdateArea= new Button();
+                btnUpdateArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+                btnUpdateArea.Location = new System.Drawing.Point(6, 29);
+                btnUpdateArea.Size = new System.Drawing.Size(75, 20);
+                btnUpdateArea.Tag = area;
+                btnUpdateArea.Text = "Update area";
+                btnUpdateArea.Click += new EventHandler(this.btnUpdateArea_Click);
+                t.Controls.Add(btnUpdateArea);
+
                 // button delete area
-                Button btnDelArea= new Button();
+                Button btnDelArea = new Button();
                 btnDelArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-                btnDelArea.Location = new System.Drawing.Point(6, 29);
+                btnDelArea.Location = new System.Drawing.Point(6, 61);
                 btnDelArea.Size = new System.Drawing.Size(75, 20);
                 btnDelArea.Tag = area;
                 btnDelArea.Text = "Delete area";
@@ -192,6 +202,19 @@ namespace GUI
             {
                 AreaBLL areaBLL = new AreaBLL();
                 areaBLL.Delete(area);
+                this.LoadData();
+            }
+        }
+
+        private void btnUpdateArea_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            Area area = (Area)btn.Tag;
+
+            AreaUpdateDialog areaUpdateDialog = new AreaUpdateDialog(area);
+            DialogResult dr = areaUpdateDialog.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
                 this.LoadData();
             }
         }

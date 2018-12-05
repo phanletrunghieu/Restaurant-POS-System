@@ -1,4 +1,4 @@
-﻿namespace GUI
+﻿namespace GUI.SystemSetup.Seat
 {
     partial class AreaAddDialog
     {

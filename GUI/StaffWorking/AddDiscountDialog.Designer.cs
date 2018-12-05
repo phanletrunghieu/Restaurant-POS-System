@@ -1,4 +1,4 @@
-﻿namespace GUI
+﻿namespace GUI.StaffWorking
 {
     partial class AddDiscountDialog
     {

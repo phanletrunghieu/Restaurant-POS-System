@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using BLL;
 using DAL;
 
-namespace GUI
+namespace GUI.StaffWorking
 {
     public partial class AddExtraDialog : Form
     {
-        Order order;
+        public Order order;
 
         public AddExtraDialog()
         {
@@ -61,7 +61,8 @@ namespace GUI
                 else
                 {
                     OrderBLL orderBLL = new OrderBLL();
-                    orderBLL.AddExtra(order, Convert.ToInt32(tvExtra.Value), tvContent.Text.Trim());
+                    this.order = orderBLL.AddExtra(order, Convert.ToInt32(tvExtra.Value), tvContent.Text.Trim());
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
             }
