@@ -338,10 +338,17 @@ namespace GUI.StaffWorking
 
         private void btnExtra_Click(object sender, EventArgs e)
         {
-            new AddExtraDialog(order).ShowDialog();
+            AddExtraDialog addExtraDialog = new AddExtraDialog(order);
+            DialogResult dr = addExtraDialog.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                this.order.Extra = addExtraDialog.order.Extra;
+                this.order.ExtraContent = addExtraDialog.order.ExtraContent;
+                this.Extra = this.order.Extra==null ? 0 : (decimal)this.order.Extra;
+            }
         }
         
-	private void btnVAT_Click(object sender, EventArgs e)
+	    private void btnVAT_Click(object sender, EventArgs e)
         {
             DialogResult dr = new AddVAT(this.order).ShowDialog();
             if (dr == DialogResult.OK)
@@ -364,6 +371,20 @@ namespace GUI.StaffWorking
             changeTable.ShowDialog();
             this.Tables = changeTable.Tables;
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            PaymentDialog paymentDialog = new PaymentDialog(this.order, this.FoodPrice, this.Discount, this.Extra, this.VAT, this.TotalPrice);
+            DialogResult dr = paymentDialog.ShowDialog();
+            if(dr == DialogResult.OK)
+            {
+                for(int i = 0; i < this.Tables.Count; i++)
+                {
+                    this.Tables[i].Status = 0;
+                }
+            }
+            this.DialogResult = DialogResult.Yes;
         }
     }
 }

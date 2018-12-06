@@ -209,9 +209,9 @@
             this.lbFoodPrice.AutoSize = true;
             this.lbFoodPrice.Location = new System.Drawing.Point(93, 209);
             this.lbFoodPrice.Name = "lbFoodPrice";
-            this.lbFoodPrice.Size = new System.Drawing.Size(44, 13);
+            this.lbFoodPrice.Size = new System.Drawing.Size(20, 13);
             this.lbFoodPrice.TabIndex = 15;
-            this.lbFoodPrice.Text = "10000đ";
+            this.lbFoodPrice.Text = "0đ";
             // 
             // label3
             // 
@@ -241,9 +241,9 @@
             this.lbTotal.AutoSize = true;
             this.lbTotal.Location = new System.Drawing.Point(93, 271);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(50, 13);
+            this.lbTotal.Size = new System.Drawing.Size(20, 13);
             this.lbTotal.TabIndex = 13;
-            this.lbTotal.Text = "200000đ";
+            this.lbTotal.Text = "0đ";
             this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
@@ -340,6 +340,7 @@
             this.btnPay.TabIndex = 4;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // lbArea
             // 
@@ -397,6 +398,7 @@
             this.ClientSize = new System.Drawing.Size(693, 327);
             this.Controls.Add(this.splitContainer1);
             this.Name = "CreateOrder";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateOrder";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

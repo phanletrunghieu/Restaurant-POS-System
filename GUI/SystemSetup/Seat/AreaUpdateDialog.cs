@@ -1,5 +1,4 @@
 ﻿using BLL;
-using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,29 +9,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GUI
+namespace GUI.SystemSetup.Seat
 {
-    public partial class DepartmentEditDialog : Form
+    public partial class AreaUpdateDialog : Form
     {
-        public Department department;
+        public DAL.Area area;
 
-        public DepartmentEditDialog()
+        public AreaUpdateDialog()
         {
             InitializeComponent();
-            this.LoadData();
         }
 
-        public DepartmentEditDialog(Department department)
+        public AreaUpdateDialog(DAL.Area area)
         {
-            this.department = department;
-
             InitializeComponent();
+            this.area = area;
             this.LoadData();
         }
 
         private void LoadData()
         {
-            this.tvNameOfDepartment.Text = this.department.Name;
+            this.txtName.Text = this.area.Name;
         }
 
 
@@ -43,15 +40,15 @@ namespace GUI
 
         private void save()
         {
-            this.department.Name = this.tvNameOfDepartment.Text;
-            DepartmentBLL departmentBLL = new DepartmentBLL();
-            departmentBLL.Update(this.department);
+            this.area.Name = this.txtName.Text;
+            AreaBLL areaBLL = new AreaBLL();
+            areaBLL.Update(this.area);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private void tvNameOfDepartment_KeyUp(object sender, KeyEventArgs e)
+        private void txtName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

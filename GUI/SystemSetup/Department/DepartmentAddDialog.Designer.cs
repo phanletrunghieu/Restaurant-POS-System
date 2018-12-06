@@ -1,4 +1,4 @@
-﻿namespace GUI
+﻿namespace GUI.SystemSetup.Department
 {
     partial class DepartmentAddDialog
     {
@@ -46,7 +46,7 @@
             // 
             // txtName
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(18, 66);
             this.txtName.Name = "txtName";

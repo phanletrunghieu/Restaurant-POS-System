@@ -36,11 +36,11 @@ namespace DAL
         [Column(TypeName = "money")]
         public decimal? VAT { get; set; }
 
-        public int? Discount { get; set; }
+        public decimal? Discount { get; set; }
 
         public byte? DiscountType { get; set; }
 
-        public int? Extra { get; set; }
+        public decimal? Extra { get; set; }
 
         public String ExtraContent { get; set; }
 

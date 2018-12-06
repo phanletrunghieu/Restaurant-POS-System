@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BLL;
 using DAL;
 
-namespace GUI
+namespace GUI.SystemSetup.Department
 {
     public partial class EmloyeeEditDialog : Form
     {

@@ -24,7 +24,8 @@ namespace BLL
                 CustomerName = customerName,
                 EmployeeID = employee.ID,
                 OrderTables = orderTables,
-                OrderDetails = listOrderDetail
+                OrderDetails = listOrderDetail,
+                DateCreated = DateTime.Now,
             };
             Connection.DBContext.Orders.Add(order);
             Connection.DBContext.SaveChanges();
@@ -51,24 +52,25 @@ namespace BLL
             return order;
         }
 
-        public void AddExtra(Order order, int extra, String content)
+        public DAL.Order AddExtra(Order order, int extra, String content)
         {
             order.Extra = extra;
             order.ExtraContent = content;
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
+            return order;
         }
 
         public Order GetCurrentOrderByTable(Table table)
         {
             var orders = Connection.DBContext.Orders.Where(o => o.OrderTables.Where(ot => ot.TableID == table.ID).Count() > 0).ToList();
-            return orders.Count > 0 ? orders[0] : null;
+            return orders.Count > 0 ? orders[orders.Count-1] : null;
         }
 
         public void AddFood(List<OrderDetail> orderDetails)
         {
             Connection.DBContext.OrderDetails.AddRange(orderDetails);
-            Connection.DBContext.SaveChangesAsync();
+            Connection.DBContext.SaveChanges();
         }
 
         public void AddVAT(Order order, decimal? vat)
@@ -102,6 +104,22 @@ namespace BLL
             }
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
+            return order;
+        }
+
+        public Order Pay(Order order, decimal moneyReceive, decimal moneyBalance)
+        {
+            order = Connection.DBContext.Orders.SingleOrDefault(o=>o.ID == order.ID);
+            if (order != null)
+            {
+                foreach (OrderTable ot in order.OrderTables)
+                {
+                    ot.Table.Status = 0;
+                }
+                order.MoneyReceive = moneyReceive;
+                order.MoneyCharge = moneyBalance;
+                Connection.DBContext.SaveChanges();
+            }
             return order;
         }
     }

@@ -56,16 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDiscountDialog.cs">
+    <Compile Include="StaffWorking\AddDiscountDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDiscountDialog.Designer.cs">
+    <Compile Include="StaffWorking\AddDiscountDialog.Designer.cs">
       <DependentUpon>AddDiscountDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddExtraDialog.cs">
+    <Compile Include="StaffWorking\AddExtraDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddExtraDialog.Designer.cs">
+    <Compile Include="StaffWorking\AddExtraDialog.Designer.cs">
       <DependentUpon>AddExtraDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffWorking\AddVAT.cs">
@@ -79,6 +79,18 @@
     </Compile>
     <Compile Include="StaffWorking\ChangeTable.Designer.cs">
       <DependentUpon>ChangeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\PaymentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\PaymentDialog.Designer.cs">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\PrintBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\PrintBill.Designer.cs">
+      <DependentUpon>PrintBill.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSetup\Menu\AddMenu.cs">
       <SubType>Form</SubType>
@@ -123,34 +135,34 @@
     <Compile Include="SystemSetup\Seat\AreaAddDialog.Designer.cs">
       <DependentUpon>AreaAddDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentAddDialog.cs">
+    <Compile Include="SystemSetup\Department\DepartmentAddDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartmentAddDialog.Designer.cs">
+    <Compile Include="SystemSetup\Department\DepartmentAddDialog.Designer.cs">
       <DependentUpon>DepartmentAddDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentEditDialog.cs">
+    <Compile Include="SystemSetup\Department\DepartmentEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartmentEditDialog.Designer.cs">
+    <Compile Include="SystemSetup\Department\DepartmentEditDialog.Designer.cs">
       <DependentUpon>DepartmentEditDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentSetup.cs">
+    <Compile Include="SystemSetup\Department\DepartmentSetup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartmentSetup.Designer.cs">
+    <Compile Include="SystemSetup\Department\DepartmentSetup.Designer.cs">
       <DependentUpon>DepartmentSetup.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmloyeeAddDialog.cs">
+    <Compile Include="SystemSetup\Department\EmloyeeAddDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmloyeeAddDialog.Designer.cs">
+    <Compile Include="SystemSetup\Department\EmloyeeAddDialog.Designer.cs">
       <DependentUpon>EmloyeeAddDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmloyeeEditDialog.cs">
+    <Compile Include="SystemSetup\Department\EmloyeeEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmloyeeEditDialog.Designer.cs">
+    <Compile Include="SystemSetup\Department\EmloyeeEditDialog.Designer.cs">
       <DependentUpon>EmloyeeEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -178,6 +190,12 @@
     </Compile>
     <Compile Include="SystemSetup\RestaurantSetup.Designer.cs">
       <DependentUpon>RestaurantSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\AreaUpdateDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\AreaUpdateDialog.Designer.cs">
+      <DependentUpon>AreaUpdateDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSetup\Seat\SeatSetup.cs">
       <SubType>Form</SubType>
@@ -210,10 +228,10 @@
       <DependentUpon>TableEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\UtilsImage.cs" />
-    <EmbeddedResource Include="AddDiscountDialog.resx">
+    <EmbeddedResource Include="StaffWorking\AddDiscountDialog.resx">
       <DependentUpon>AddDiscountDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddExtraDialog.resx">
+    <EmbeddedResource Include="StaffWorking\AddExtraDialog.resx">
       <DependentUpon>AddExtraDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\MenuItemControl.resx">
@@ -230,6 +248,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffWorking\CreateOrder.resx">
       <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\PaymentDialog.resx">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\PrintBill.resx">
+      <DependentUpon>PrintBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
       <DependentUpon>TablesStatus.cs</DependentUpon>
@@ -249,19 +273,19 @@
     <EmbeddedResource Include="FeatureSelector.resx">
       <DependentUpon>FeatureSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartmentAddDialog.resx">
+    <EmbeddedResource Include="SystemSetup\Department\DepartmentAddDialog.resx">
       <DependentUpon>DepartmentAddDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartmentEditDialog.resx">
+    <EmbeddedResource Include="SystemSetup\Department\DepartmentEditDialog.resx">
       <DependentUpon>DepartmentEditDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartmentSetup.resx">
+    <EmbeddedResource Include="SystemSetup\Department\DepartmentSetup.resx">
       <DependentUpon>DepartmentSetup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmloyeeAddDialog.resx">
+    <EmbeddedResource Include="SystemSetup\Department\EmloyeeAddDialog.resx">
       <DependentUpon>EmloyeeAddDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmloyeeEditDialog.resx">
+    <EmbeddedResource Include="SystemSetup\Department\EmloyeeEditDialog.resx">
       <DependentUpon>EmloyeeEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
@@ -281,6 +305,9 @@
     </Compile>
     <EmbeddedResource Include="SystemSetup\RestaurantSetup.resx">
       <DependentUpon>RestaurantSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Seat\AreaUpdateDialog.resx">
+      <DependentUpon>AreaUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Seat\SeatSetup.resx">
       <DependentUpon>SeatSetup.cs</DependentUpon>

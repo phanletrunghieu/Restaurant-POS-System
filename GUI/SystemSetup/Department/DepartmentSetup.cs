@@ -11,7 +11,7 @@ using BLL;
 using DAL;
 using GUI.Control;
 
-namespace GUI
+namespace GUI.SystemSetup.Department
 {
     public partial class DepartmentSetup : Form
     {
@@ -28,7 +28,7 @@ namespace GUI
             listDataGridView.Clear();
 
             DepartmentBLL departmentBLL = new DepartmentBLL();
-            List<Department> listDepartment = departmentBLL.ListDepartment();
+            List<DAL.Department> listDepartment = departmentBLL.ListDepartment();
             for (int i = 0; i < listDepartment.Count; i++)
             {
                 var t = new System.Windows.Forms.TabPage();
@@ -127,21 +127,21 @@ namespace GUI
         private void btEditDepartment_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Department department = (Department)btn.Tag;
+            DAL.Department department = (DAL.Department)btn.Tag;
             this.EditDepartment(department);
         }
 
         private void btDeleteDepartment_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Department department = (Department)btn.Tag;
+            DAL.Department department = (DAL.Department)btn.Tag;
             this.DeleteDepartment(department);
         }
 
         private void btnAddEmloyee_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Department department = (Department)btn.Tag;
+            DAL.Department department = (DAL.Department)btn.Tag;
             new EmloyeeAddDialog(department).ShowDialog();
             this.LoadData();
         }
@@ -233,7 +233,7 @@ namespace GUI
 
             }
         }
-        private void DeleteDepartment(Department department)
+        private void DeleteDepartment(DAL.Department department)
         {
             DialogResult dr = MessageBox.Show("Are you sure to delete department \"" + department.Name + "\"", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
@@ -247,7 +247,7 @@ namespace GUI
             }
         }
 
-         private void EditDepartment(Department department)
+         private void EditDepartment(DAL.Department department)
         {
             DepartmentEditDialog departmentEditDialog = new DepartmentEditDialog(department);
             DialogResult dr = departmentEditDialog.ShowDialog();

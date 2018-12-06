@@ -1,4 +1,4 @@
-﻿namespace GUI
+﻿namespace GUI.SystemSetup.Department
 {
     partial class EmloyeeAddDialog
     {
