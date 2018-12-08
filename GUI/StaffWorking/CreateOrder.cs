@@ -317,7 +317,7 @@ namespace GUI.StaffWorking
             else
             {
                 // add food
-                orderBLL.AddFood(listOrderDetail);
+                orderBLL.AddFood(this.order, listOrderDetail);
             }
 
             this.DialogResult = DialogResult.OK;
