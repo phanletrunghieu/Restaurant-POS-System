@@ -19,6 +19,14 @@ namespace BLL
                 orderTables.Add(new OrderTable { TableID = table.ID });
             }
 
+            // calculate food price (price before)
+            decimal priceBefore = 0;
+            foreach(OrderDetail od in listOrderDetail)
+            {
+                if (od.Price != null)
+                    priceBefore += (decimal)od.Price * (int)od.Quantity;
+            }
+
             Order order = new Order
             {
                 CustomerName = customerName,
@@ -26,6 +34,8 @@ namespace BLL
                 OrderTables = orderTables,
                 OrderDetails = listOrderDetail,
                 DateCreated = DateTime.Now,
+                PriceBefore = priceBefore,
+                PriceAfter = priceBefore,
             };
             Connection.DBContext.Orders.Add(order);
             Connection.DBContext.SaveChanges();
@@ -43,10 +53,33 @@ namespace BLL
             return order;
         }
 
+        private decimal CalculatePriceAfter(Order order)
+        {
+            if (order.PriceBefore != null)
+            {
+                decimal price = (decimal)order.PriceBefore;
+                // discount
+                if (order.Discount != null)
+                    price -= (decimal)order.Discount;
+
+                // extra
+                if (order.Extra != null)
+                    price += (decimal)order.Extra;
+
+                // vat
+                if (order.VAT != null)
+                    price += price * (decimal)order.VAT / 100;
+
+                return price;
+            }
+            return 0;
+        }
+
         public Order AddDiscount(Order order , int discount , byte discountType)
         {
             order.Discount = discount;
             order.DiscountType = discountType; // 1 : Cash  2 : Percent
+            order.PriceAfter = CalculatePriceAfter(order);
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
             return order;
@@ -56,6 +89,7 @@ namespace BLL
         {
             order.Extra = extra;
             order.ExtraContent = content;
+            order.PriceAfter = CalculatePriceAfter(order);
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
             return order;
@@ -67,8 +101,20 @@ namespace BLL
             return orders.Count > 0 ? orders[orders.Count-1] : null;
         }
 
-        public void AddFood(List<OrderDetail> orderDetails)
+        public void AddFood(Order order, List<OrderDetail> orderDetails)
         {
+            // calculate food price (price before)
+            decimal priceBefore = 0;
+            foreach (OrderDetail od in orderDetails)
+            {
+                if (od.Price != null)
+                    priceBefore += (decimal)od.Price * (int)od.Quantity;
+            }
+
+            order.PriceBefore += priceBefore;
+            order.PriceAfter = CalculatePriceAfter(order);
+
+            Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.OrderDetails.AddRange(orderDetails);
             Connection.DBContext.SaveChanges();
         }
@@ -76,6 +122,7 @@ namespace BLL
         public void AddVAT(Order order, decimal? vat)
         {
             order.VAT = vat;
+            order.PriceAfter = CalculatePriceAfter(order);
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
         }

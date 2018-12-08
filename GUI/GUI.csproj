@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analytics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analytics.Designer.cs">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffWorking\AddDiscountDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +235,9 @@
       <DependentUpon>TableEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\UtilsImage.cs" />
+    <EmbeddedResource Include="Analytics.resx">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffWorking\AddDiscountDialog.resx">
       <DependentUpon>AddDiscountDialog.cs</DependentUpon>
     </EmbeddedResource>

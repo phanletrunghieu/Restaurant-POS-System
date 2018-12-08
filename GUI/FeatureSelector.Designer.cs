@@ -30,6 +30,7 @@
         {
             this.btnSystemSetup = new System.Windows.Forms.Button();
             this.btnWork = new System.Windows.Forms.Button();
+            this.btnAnalytics = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSystemSetup
@@ -54,11 +55,23 @@
             this.btnWork.UseVisualStyleBackColor = true;
             this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
             // 
+            // btnAnalytics
+            // 
+            this.btnAnalytics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnalytics.Location = new System.Drawing.Point(331, 82);
+            this.btnAnalytics.Name = "btnAnalytics";
+            this.btnAnalytics.Size = new System.Drawing.Size(100, 100);
+            this.btnAnalytics.TabIndex = 1;
+            this.btnAnalytics.Text = "Analytics";
+            this.btnAnalytics.UseVisualStyleBackColor = true;
+            this.btnAnalytics.Click += new System.EventHandler(this.btnAnalytics_Click);
+            // 
             // FeatureSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 267);
+            this.ClientSize = new System.Drawing.Size(485, 248);
+            this.Controls.Add(this.btnAnalytics);
             this.Controls.Add(this.btnWork);
             this.Controls.Add(this.btnSystemSetup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -75,5 +88,6 @@
 
         private System.Windows.Forms.Button btnSystemSetup;
         private System.Windows.Forms.Button btnWork;
+        private System.Windows.Forms.Button btnAnalytics;
     }
 }

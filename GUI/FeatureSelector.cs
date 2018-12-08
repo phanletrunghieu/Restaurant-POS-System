@@ -20,12 +20,17 @@ namespace GUI
 
         private void btnSystemSetup_Click(object sender, EventArgs e)
         {
-            new RestaurantSetup().Show();
+            new RestaurantSetup().ShowDialog();
         }
 
         private void btnWork_Click(object sender, EventArgs e)
         {
-            new TablesStatus().Show();
+            new TablesStatus().ShowDialog();
+        }
+
+        private void btnAnalytics_Click(object sender, EventArgs e)
+        {
+            new Analytics().ShowDialog();
         }
     }
 }
