@@ -8,17 +8,13 @@ namespace BLL
 {
     public class ReportType
     {
-        public int? RawDateCreated;
+        public string RawDateCreated;
         public decimal? RawTotalRevenue;
+        public int numOrder;
 
-        public int DateCreated
+        public string DateCreated
         {
-            get
-            {
-                if (this.RawDateCreated == null)
-                    return 0;
-                return (int)RawDateCreated;
-            }
+            get { return RawDateCreated; }
         }
 
         public decimal TotalRevenue
@@ -30,6 +26,12 @@ namespace BLL
                 return (decimal)RawTotalRevenue;
             }
         }
+
+        public int NumOrder
+        {
+            get { return numOrder; }
+            set { numOrder = value; }
+        }
     }
 
     public class AnalyticsBLL
@@ -38,11 +40,26 @@ namespace BLL
         {
             var report = from o in Connection.DBContext.Orders
                          where o.DateCreated.Value.Month == month && o.DateCreated.Value.Year == year
+                         group o by new { DateCreated = o.DateCreated.Value.Day } into oGroup
+                         select new ReportType
+                         {
+                             RawDateCreated = oGroup.Key.DateCreated+"/"+month+"/"+year,
+                             RawTotalRevenue = oGroup.Sum(x => x.PriceAfter),
+                             NumOrder = oGroup.Count(),
+                         };
+            return report.ToList();
+        }
+
+        public List<ReportType> GetAnalyticsByYear(int year)
+        {
+            var report = from o in Connection.DBContext.Orders
+                         where o.DateCreated.Value.Year == year
                          group o by new { DateCreated = o.DateCreated.Value.Month } into oGroup
                          select new ReportType
                          {
-                             RawDateCreated = oGroup.Key.DateCreated,
-                             RawTotalRevenue = oGroup.Sum(x => x.PriceAfter)
+                             RawDateCreated = oGroup.Key.DateCreated+"/"+year,
+                             RawTotalRevenue = oGroup.Sum(x => x.PriceAfter),
+                             NumOrder = oGroup.Count(),
                          };
             return report.ToList();
         }
