@@ -22,6 +22,7 @@ namespace GUI.SystemSetup.Menu
         public AddMenu(DAL.Menu menu)
         {
             InitializeComponent();
+            this.label2.Text = "Edit menu";
             this.btnAddMenu.Text = "Update";
             this.menu = menu;
             this.txtName.Text = this.menu.Name;
