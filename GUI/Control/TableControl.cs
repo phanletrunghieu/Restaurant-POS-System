@@ -50,8 +50,17 @@ namespace GUI.Control
         public TableControl(Table table, bool useBkColorForStatus)
         {
             InitializeComponent();
+            AddEvent();
             this.UseBkColorForStatus = useBkColorForStatus;
             this.Table = table;
+        }
+
+        private void AddEvent()
+        {
+            for (int i = 0; i < this.Controls.Count; i++)
+            {
+                this.Controls[i].MouseDown += new MouseEventHandler((object sender, MouseEventArgs e) => this.OnMouseDown(e));
+            }
         }
 
         private void UpdatGUI()
