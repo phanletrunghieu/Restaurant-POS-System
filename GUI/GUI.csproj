@@ -32,8 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +57,253 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Analytics.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Analytics.Designer.cs">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\AddDiscountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\AddDiscountDialog.Designer.cs">
+      <DependentUpon>AddDiscountDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\AddExtraDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\AddExtraDialog.Designer.cs">
+      <DependentUpon>AddExtraDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\AddVAT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\AddVAT.Designer.cs">
+      <DependentUpon>AddVAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\ChangeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\ChangeTable.Designer.cs">
+      <DependentUpon>ChangeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\PaymentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\PaymentDialog.Designer.cs">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\PrintBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\PrintBill.Designer.cs">
+      <DependentUpon>PrintBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddMenu.Designer.cs">
+      <DependentUpon>AddMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\AddFood.Designer.cs">
+      <DependentUpon>AddFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SelectMenuItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\SelectMenuItemControl.Designer.cs">
+      <DependentUpon>SelectMenuItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalData.cs" />
+    <Compile Include="StaffWorking\CreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffWorking\TablesStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffWorking\TablesStatus.Designer.cs">
+      <DependentUpon>TablesStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuSetup.Designer.cs">
+      <DependentUpon>MenuSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\AreaAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\AreaAddDialog.Designer.cs">
+      <DependentUpon>AreaAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Department\DepartmentAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Department\DepartmentAddDialog.Designer.cs">
+      <DependentUpon>DepartmentAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Department\DepartmentEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Department\DepartmentEditDialog.Designer.cs">
+      <DependentUpon>DepartmentEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Department\DepartmentSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Department\DepartmentSetup.Designer.cs">
+      <DependentUpon>DepartmentSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Department\EmloyeeAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Department\EmloyeeAddDialog.Designer.cs">
+      <DependentUpon>EmloyeeAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Department\EmloyeeEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Department\EmloyeeEditDialog.Designer.cs">
+      <DependentUpon>EmloyeeEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSelector.Designer.cs">
+      <DependentUpon>FeatureSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassworkEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassworkEditDialog.Designer.cs">
+      <DependentUpon>PassworkEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemSetup\RestaurantSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\RestaurantSetup.Designer.cs">
+      <DependentUpon>RestaurantSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\AreaUpdateDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\AreaUpdateDialog.Designer.cs">
+      <DependentUpon>AreaUpdateDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\SeatSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\SeatSetup.Designer.cs">
+      <DependentUpon>SeatSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\TableAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\TableAddDialog.Designer.cs">
+      <DependentUpon>TableAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MenuItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MenuItemControl.Designer.cs">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TableControl.Designer.cs">
+      <DependentUpon>TableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\TableEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Seat\TableEditDialog.Designer.cs">
+      <DependentUpon>TableEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\UtilsImage.cs" />
+    <EmbeddedResource Include="Analytics.resx">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\AddDiscountDialog.resx">
+      <DependentUpon>AddDiscountDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\AddExtraDialog.resx">
+      <DependentUpon>AddExtraDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MenuItemControl.resx">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\SelectMenuItemControl.resx">
+      <DependentUpon>SelectMenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\AddVAT.resx">
+      <DependentUpon>AddVAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\ChangeTable.resx">
+      <DependentUpon>ChangeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\PaymentDialog.resx">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\PrintBill.resx">
+      <DependentUpon>PrintBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffWorking\TablesStatus.resx">
+      <DependentUpon>TablesStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\AddMenu.resx">
+      <DependentUpon>AddMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\AddFood.resx">
+      <DependentUpon>AddFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\MenuSetup.resx">
+      <DependentUpon>MenuSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Seat\AreaAddDialog.resx">
+      <DependentUpon>AreaAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSelector.resx">
+      <DependentUpon>FeatureSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Department\DepartmentAddDialog.resx">
+      <DependentUpon>DepartmentAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Department\DepartmentEditDialog.resx">
+      <DependentUpon>DepartmentEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Department\DepartmentSetup.resx">
+      <DependentUpon>DepartmentSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Department\EmloyeeAddDialog.resx">
+      <DependentUpon>EmloyeeAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Department\EmloyeeEditDialog.resx">
+      <DependentUpon>EmloyeeEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassworkEditDialog.resx">
+      <DependentUpon>PassworkEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +313,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SystemSetup\RestaurantSetup.resx">
+      <DependentUpon>RestaurantSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Seat\AreaUpdateDialog.resx">
+      <DependentUpon>AreaUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Seat\SeatSetup.resx">
+      <DependentUpon>SeatSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Seat\TableAddDialog.resx">
+      <DependentUpon>TableAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TableControl.resx">
+      <DependentUpon>TableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Seat\TableEditDialog.resx">
+      <DependentUpon>TableEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,6 +354,35 @@
       <Project>{e418fe1a-523c-4b54-8e63-f7bda93fc1b6}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
