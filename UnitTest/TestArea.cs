@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DAL;
 using BLL;
@@ -8,7 +6,7 @@ using BLL;
 namespace UnitTest
 {
     [TestClass]
-    public class UnitTestArea
+    public class TestArea
     {
         private AreaBLL areaBLL = new AreaBLL();
 
