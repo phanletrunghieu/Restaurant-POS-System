@@ -13,9 +13,9 @@ namespace UnitTest
         [TestMethod]
         public void TestCRUDDepartment()
         {
-            string departmentExpected = "CEO";
-            Department department= departmentBLL.CreateDepartment(departmentExpected);
-            Assert.AreEqual(departmentExpected, department.Name);
+            string nameExpected = "CEO";
+            Department department= departmentBLL.CreateDepartment(nameExpected);
+            Assert.AreEqual(nameExpected, department.Name);
             TestUpdateDepartment(department);
         }
         public void TestUpdateDepartment(Department department)
