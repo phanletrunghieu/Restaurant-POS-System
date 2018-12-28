@@ -49,7 +49,7 @@ namespace UnitTest
             byte[] imageTest = File.ReadAllBytes(rootPath + "/data/images/com-chien-ca-man.jpg");
 
             MenuItem menuItemNew = new MenuItem();
-            menuItemNew.ID = menuItemOld.ID;
+            menuItemNew = menuItemOld;
             menuItemNew.MenuID = menuIDTest;
             menuItemNew.Name = nameTest;
             menuItemNew.Price = priceTest;
@@ -62,10 +62,36 @@ namespace UnitTest
             MenuItem menuItemExpected = new MenuItem();
             for (int i=0;i< menuItems.Count; i++)
             {
-                if (menuItems[i].ID == menuItemNew.ID) menuItemExpected = menuItems[i];
+                if (menuItems[i].ID == menuItemNew.ID)
+                {
+                    menuItemExpected.ID = menuItems[i].ID;
+                    menuItemExpected.MenuID = menuItems[i].MenuID;
+                    menuItemExpected.Name = menuItems[i].Name;
+                    menuItemExpected.Price = menuItems[i].Price;
+                    menuItemExpected.PriceAfter = menuItems[i].PriceAfter;
+                    menuItemExpected.Image = imageTest;
+                }
             }
+            Assert.AreEqual(menuItemNew.ID, menuItemExpected.ID);
+            Assert.AreEqual(menuItemNew.MenuID, menuItemExpected.MenuID);
+            Assert.AreEqual(menuItemNew.Name, menuItemExpected.Name);
+            Assert.AreEqual(menuItemNew.Price, menuItemExpected.Price);
+            Assert.AreEqual(menuItemNew.PriceAfter, menuItemExpected.PriceAfter);
+            Assert.AreEqual(menuItemNew.Image, imageTest);
 
-            Assert.AreEqual(menuItemNew, menuItemExpected);
+            TestDeleteMenuItem(menuItemNew);
+        }
+        public void TestDeleteMenuItem(MenuItem menuItemNew)
+        {
+            bool isDelete = true;
+            menuItemBLL.Delete(menuItemNew);
+            List<Menu> menus = menuBLL.ListMenu();
+            List<MenuItem> menuItems = menuItemBLL.FindByMenuID(menus[0]);
+            for (int i = 0; i < menuItems.Count; i++)
+            {
+                if (menuItems[i].ID == menuItemNew.ID) isDelete = false;
+            }
+            Assert.AreEqual(isDelete, true);
         }
     }
 }
