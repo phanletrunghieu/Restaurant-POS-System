@@ -16,7 +16,13 @@ namespace UnitTest
         {
             string nameExpected = "BanVIP";
             Area area = areaBLL.CreateArea(nameExpected);
-            Assert.AreEqual(nameExpected, area.Name);
+            bool isCreated = false;
+            List<Area> areas = areaBLL.ListArea();
+            for (int i = 0; i < areas.Count; i++)
+            {
+                if (areas[i].Name == nameExpected) isCreated=true;
+            }
+            Assert.AreEqual(true, isCreated);
             TestUpdateArea(area);
         }
         public void TestUpdateArea(Area area)

@@ -33,7 +33,19 @@ namespace UnitTest
             menuItemTest.Image = imageTest;
 
             MenuItem menuItemExpected = menuItemBLL.CreateMenuItem(menuItemTest);
-            Assert.AreEqual(menuItemTest, menuItemExpected);
+            bool isCreated = false;
+            List<MenuItem> menuItems = menuItemBLL.FindByMenuID(menus[0]);
+            for (int i = 0; i < menuItems.Count; i++)
+            {
+                if (menuItemExpected.ID == menuItems[i].ID &&
+                menuItemExpected.MenuID == menuItems[i].MenuID &&
+                menuItemExpected.Name == menuItems[i].Name &&
+                menuItemExpected.Price == menuItems[i].Price &&
+                menuItemExpected.PriceAfter == menuItems[i].PriceAfter &&
+                menuItemExpected.Image == imageTest) isCreated = true;
+            }
+
+            Assert.AreEqual(true, isCreated);
 
             TestUpdateMenuItem(menuItemExpected);
         }

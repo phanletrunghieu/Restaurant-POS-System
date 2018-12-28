@@ -16,7 +16,13 @@ namespace UnitTest
         {
             string nameExpected = "CEO";
             Department department= departmentBLL.CreateDepartment(nameExpected);
-            Assert.AreEqual(nameExpected, department.Name);
+            bool isCreated = false;
+            List<Department> departments = departmentBLL.ListDepartment();
+            for (int i = 0; i < departments.Count; i++)
+            {
+                if (departments[i].Name == nameExpected) isCreated=true;
+            }
+            Assert.AreEqual(true, isCreated);
             TestUpdateDepartment(department);
         }
         public void TestUpdateDepartment(Department department)
@@ -49,6 +55,7 @@ namespace UnitTest
         {
             try
             {
+                //ERROR
                 //Department department = departmentBLL.CreateDepartment("");
             }
             catch (Exception e)

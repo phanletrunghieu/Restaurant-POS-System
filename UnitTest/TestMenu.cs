@@ -16,7 +16,13 @@ namespace UnitTest
         {
             string nameExpected = "Ăn rạng sáng";
             Menu menu = menuBLL.CreateMenu(nameExpected);
-            Assert.AreEqual(nameExpected, menu.Name);
+            bool isCreated = false;
+            List<Menu> menus = menuBLL.ListMenu();
+            for (int i = 0; i < menus.Count; i++)
+            {
+                if (menus[i].Name == nameExpected) isCreated = true;
+            }
+            Assert.AreEqual(true, isCreated);
             TestUpdateMenu(menu);
         }
         public void TestUpdateMenu(Menu menu)
