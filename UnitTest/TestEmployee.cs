@@ -110,5 +110,41 @@ namespace UnitTest
                 Assert.AreNotEqual("", e.ToString());
             }
         }
+        [TestMethod]
+        public void TestDeleteAllEmployeeAndDepartment()
+        {
+            string userNameExpected = "AnLe";
+            string nameExpected = "AnLe";
+            string passWord = "AnLe";
+
+            string userNameExpected1 = "AnLe1";
+            string nameExpected1 = "AnLe1";
+            string passWord1 = "AnLe1";
+
+            Employee employee = employeeBLL.CreateEmployee(nameExpected, userNameExpected, passWord);
+            Employee employee1 = employeeBLL.CreateEmployee(nameExpected1, userNameExpected1, passWord1);
+            EmployeeDepartment employeeDepartment = new EmployeeDepartment();
+            EmployeeDepartment employeeDepartment1 = new EmployeeDepartment();
+
+            Department department = departmentBLL.CreateDepartment("ANLE");
+
+            employeeDepartment.DepartmentID = department.ID;
+            employeeDepartment.EmployeeID = employee.ID;
+            employeeDepartment1.DepartmentID = department.ID;
+            employeeDepartment1.EmployeeID = employee1.ID;
+            emloyeeDepartmentBLL.CreateEmployeeDepartment(employeeDepartment);
+            emloyeeDepartmentBLL.CreateEmployeeDepartment(employeeDepartment1);
+
+            employeeBLL.DeleteByDepartment(emloyeeDepartmentBLL.ListEmployeeDepartmentByDepartment(department));
+
+            bool isDelete = true;
+            departmentBLL.DeleteDepartment(department);
+            List<Department> departments = departmentBLL.ListDepartment();
+            for (int i = 0; i < departments.Count; i++)
+            {
+                if (departments[i].ID == department.ID) isDelete = false;
+            }
+            Assert.AreEqual(isDelete, true);
+        }
     }
 }
