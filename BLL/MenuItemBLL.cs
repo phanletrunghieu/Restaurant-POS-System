@@ -19,11 +19,11 @@ namespace BLL
         {
             if (menuItem.MenuID != null)
             {
-                if (menuItem.Name != null || menuItem.Name !="")
+                if (menuItem.Name != null && menuItem.Name !="")
                 {
-                    if (menuItem.Price != null || menuItem.Price != 0)
+                    if (menuItem.Price != null && menuItem.Price != 0)
                     {
-                        if (menuItem.PriceAfter != null || menuItem.PriceAfter != 0)
+                        if (menuItem.PriceAfter != null && menuItem.PriceAfter != 0)
                         {
                             if (menuItem.Image != null)
                             {

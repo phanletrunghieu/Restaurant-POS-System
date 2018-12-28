@@ -27,7 +27,7 @@ namespace BLL
 
         public Table CreateTable(Table table)
         {
-            if (table.Name!=null || table.Name != "")
+            if (table.Name!=null && table.Name != "")
             {
                 Connection.DBContext.Tables.Add(table);
                 Connection.DBContext.SaveChanges();

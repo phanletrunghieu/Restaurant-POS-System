@@ -17,7 +17,7 @@ namespace BLL
         public Department CreateDepartment(string name)
         {
             Department department = new Department { Name = "" };
-            if (name != "" || name!= null)
+            if (name != "" && name != null)
             {
                 department = new Department { Name = name };
                 Connection.DBContext.Departments.Add(department);

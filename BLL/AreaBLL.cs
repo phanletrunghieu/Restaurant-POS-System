@@ -18,7 +18,7 @@ namespace BLL
         public Area CreateArea(string name)
         {
             Area area= new Area { Name = "" };
-            if (name != "" || name != null)
+            if (name != "" && name != null)
             {
                 area = new Area { Name = name };
                 Connection.DBContext.Areas.Add(area);

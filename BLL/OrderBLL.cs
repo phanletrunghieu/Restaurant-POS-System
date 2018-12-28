@@ -36,7 +36,7 @@ namespace BLL
                 PriceBefore = 0,
                 PriceAfter = 0,
             };
-            if (customerName!= null || customerName != "")
+            if (customerName!= null && customerName != "")
             {
                 if (employee.ID != null)
                 {
@@ -44,7 +44,7 @@ namespace BLL
                     {
                         if (listOrderDetail != null)
                         {
-                            if (priceBefore != null || priceBefore != 0)
+                            if (priceBefore != null && priceBefore != 0)
                             {
                                 order = new Order
                                 {
