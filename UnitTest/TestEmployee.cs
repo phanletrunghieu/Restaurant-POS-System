@@ -84,5 +84,31 @@ namespace UnitTest
             }
             Assert.AreEqual(true, isDeleted);
         }
+        [TestMethod]
+        public void TestInputEmptyEmployee()
+        {
+            try
+            {
+                string userNameExpected = "";
+                string nameExpected = "";
+                string passWord = "";
+
+                Employee employee = employeeBLL.CreateEmployee(nameExpected, userNameExpected, passWord);
+                EmployeeDepartment employeeDepartment = new EmployeeDepartment();
+                List<Department> departments = departmentBLL.ListDepartment();
+
+                bool isCreated = false;
+                List<Employee> employees = employeeBLL.ListEmployeeByDepartment(departments[0]);
+                for (int i = 0; i < employees.Count; i++)
+                {
+                    if (employees[i].Name == nameExpected && employees[i].Username == userNameExpected) isCreated = true;
+                }
+                Assert.AreEqual(false, isCreated);
+            }
+            catch (Exception e)
+            {
+                Assert.AreNotEqual("", e.ToString());
+            }
+        }
     }
 }
