@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DAL;
 using BLL;
+using System;
 
 namespace UnitTest
 {
@@ -42,6 +43,19 @@ namespace UnitTest
                 if (areas[i].ID == area.ID) isDelete = false;
             }
             Assert.AreEqual(isDelete, true);
+        }
+        [TestMethod]
+        public void TestInputEmptyArea()
+        {
+            try
+            {
+                Area area = areaBLL.CreateArea("");
+            }
+            catch (Exception e)
+            {
+                Assert.AreNotEqual("", e.ToString());
+            }
+           
         }
     }
 }
