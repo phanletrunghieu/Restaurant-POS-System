@@ -93,5 +93,34 @@ namespace UnitTest
             }
             Assert.AreEqual(isDelete, true);
         }
+        [TestMethod]
+        public void TestInputEmptyMenuItem()
+        {
+            try
+            {
+                bool isCreate = false;
+
+                List<Menu> menus = menuBLL.ListMenu();
+
+                MenuItem menuItemTest = new MenuItem();
+                menuItemTest.MenuID = menus[0].ID;
+                menuItemTest.Name = "";
+                menuItemTest.Price = 0;
+                menuItemTest.PriceAfter = 0;
+                menuItemTest.Image = null;
+                MenuItem menuItemExpected = menuItemBLL.CreateMenuItem(menuItemTest);
+
+                List<MenuItem> menuItems = menuItemBLL.FindByMenuID(menus[0]);
+                for (int i = 0; i < menuItems.Count; i++)
+                {
+                    if (menuItems[i] == menuItemTest) isCreate = true;
+                }
+                Assert.AreEqual(isCreate, false);
+            }
+            catch (Exception e)
+            {
+                Assert.AreNotEqual("", e.ToString());
+            }
+        }
     }
 }

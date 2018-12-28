@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DAL;
 using BLL;
+using System;
 
 namespace UnitTest
 {
@@ -42,6 +43,25 @@ namespace UnitTest
                 if (menus[i].ID == menu.ID) isDelete = false;
             }
             Assert.AreEqual(isDelete, true);
+        }
+        [TestMethod]
+        public void TestInputEmptyMenu()
+        {
+            try
+            {
+                bool isCreate = false;
+                Menu menu = menuBLL.CreateMenu("");
+                List<Menu> menus = menuBLL.ListMenu();
+                for (int i = 0; i < menus.Count; i++)
+                {
+                    if (menus[i] == menu) isCreate = true;
+                }
+                Assert.AreEqual(isCreate, false);
+            }
+            catch (Exception e)
+            {
+                Assert.AreNotEqual("", e.ToString());
+            }
         }
     }
 }

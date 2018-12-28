@@ -62,7 +62,6 @@ namespace UnitTest
             {
                 Assert.AreNotEqual("", e.ToString());
             }
-           
         }
     }
 }
