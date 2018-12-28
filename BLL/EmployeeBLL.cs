@@ -28,9 +28,19 @@ namespace BLL
 
         public Employee CreateEmployee(string name , string userName , string passWord)
         {
-            Employee employee = new Employee { Name = name , Username = userName , Password = passWord };
-            Connection.DBContext.Employees.Add(employee);
-            Connection.DBContext.SaveChanges();
+            Employee employee = new Employee { Name = "", Username = "", Password = "" };
+            if (name != "" || name != null)
+            {
+                if (userName != "" || userName != null)
+                {
+                    if (passWord != "" || passWord != null)
+                    {
+                        employee = new Employee { Name = name, Username = userName, Password = passWord };
+                        Connection.DBContext.Employees.Add(employee);
+                        Connection.DBContext.SaveChanges();
+                    }
+                }
+            }
             return employee;
         }
 

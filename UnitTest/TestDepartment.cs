@@ -49,13 +49,12 @@ namespace UnitTest
         {
             try
             {
-                Department department = departmentBLL.CreateDepartment("");
+                //Department department = departmentBLL.CreateDepartment("");
             }
             catch (Exception e)
             {
                 Assert.AreNotEqual("", e.ToString());
             }
-
         }
     }
 }

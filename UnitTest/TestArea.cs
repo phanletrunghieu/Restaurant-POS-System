@@ -49,7 +49,14 @@ namespace UnitTest
         {
             try
             {
+                bool isCreate = false;
                 Area area = areaBLL.CreateArea("");
+                List<Area> areas = areaBLL.ListArea();
+                for (int i = 0; i < areas.Count; i++)
+                {
+                    if (areas[i] == area) isCreate = true;
+                }
+                Assert.AreEqual(isCreate, false);
             }
             catch (Exception e)
             {
