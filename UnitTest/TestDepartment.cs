@@ -55,8 +55,14 @@ namespace UnitTest
         {
             try
             {
-                //ERROR
-                //Department department = departmentBLL.CreateDepartment("");
+                bool isCreated = false;
+                Department department = departmentBLL.CreateDepartment("");
+                List<Department> departments = departmentBLL.ListDepartment();
+                for (int i = 0; i < departments.Count; i++)
+                {
+                    if (departments[i].Name == "") isCreated = true;
+                }
+                Assert.AreEqual(false, isCreated);
             }
             catch (Exception e)
             {
