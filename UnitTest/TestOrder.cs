@@ -163,10 +163,13 @@ namespace UnitTest
 
             Order currentOrder= orderBLL.ChangeTable(order, tables);
 
+            Order newOrder= orderBLL.GetCurrentOrderByTable(tables[0]);
+
             List<Table> tables1 = tableBLL.ListTablesByArea(areas[0]);
             List<Table> tables2 = tableBLL.ListTablesByArea(areas[1]);
 
             Assert.AreNotEqual(tables1[0].Status, tables2[0].Status);
+            Assert.AreEqual(newOrder.MoneyReceive, currentOrder.MoneyReceive);
 
             TestPay(currentOrder);
         }
