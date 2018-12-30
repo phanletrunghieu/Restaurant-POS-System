@@ -33,6 +33,7 @@
             this.lbPrice = new System.Windows.Forms.Label();
             this.lbQuantity = new System.Windows.Forms.Label();
             this.btnDecrease = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,10 +93,22 @@
             this.btnDecrease.UseVisualStyleBackColor = true;
             this.btnDecrease.Click += new System.EventHandler(this.btnDecrease_Click);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.Location = new System.Drawing.Point(301, 3);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(22, 23);
+            this.btnRemove.TabIndex = 5;
+            this.btnRemove.Text = "x";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // SelectMenuItemControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnDecrease);
             this.Controls.Add(this.lbQuantity);
             this.Controls.Add(this.lbPrice);
@@ -118,5 +131,6 @@
         private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.Label lbQuantity;
         private System.Windows.Forms.Button btnDecrease;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

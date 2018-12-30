@@ -18,6 +18,7 @@ namespace GUI.StaffWorking
         public TablesStatus()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             this.LoadData();
         }
 

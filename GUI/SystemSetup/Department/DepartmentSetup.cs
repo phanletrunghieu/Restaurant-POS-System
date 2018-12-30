@@ -16,9 +16,10 @@ namespace GUI.SystemSetup.Department
     public partial class DepartmentSetup : Form
     {
         List<DataGridView> listDataGridView = new List<DataGridView>();
-      public DepartmentSetup()
+        public DepartmentSetup()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             this.LoadData();
         }
 

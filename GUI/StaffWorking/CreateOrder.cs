@@ -90,6 +90,7 @@ namespace GUI.StaffWorking
         public CreateOrder()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             this.Tables = new List<Table>{
                 new Table
                 {
@@ -105,6 +106,7 @@ namespace GUI.StaffWorking
         public CreateOrder(Table table, Area area)
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             this.Tables = new List<Table>{table};
             this.OldTables = new List<Table>(this.Tables);
             this.Area = area;
@@ -129,7 +131,7 @@ namespace GUI.StaffWorking
                 {
                     foreach (OrderDetail od in this.order.OrderDetails)
                     {
-                        this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, true);
+                        this.NewSelectMenuItem(od.MenuItem, (int)od.Quantity, od);
                     }
 
                     // get order tables
@@ -138,6 +140,8 @@ namespace GUI.StaffWorking
                     {
                         this.Tables.Add(od.Table);
                     }
+                    this.lbTable.Text = this.getTableName();
+
                     this.OldTables = new List<Table>(this.Tables);
                 }
 
@@ -260,7 +264,7 @@ namespace GUI.StaffWorking
             List<SelectMenuItemControl> listControls = this.flowLayoutPanelRight.Controls.OfType<SelectMenuItemControl>().ToList();
             try
             {
-                SelectMenuItemControl find = listControls.Where(c => !c.ReadOnly && c.MenuItem.ID == menuItem.ID).Single();
+                SelectMenuItemControl find = listControls.Where(c => c.OrderDetail==null && c.MenuItem.ID == menuItem.ID).Single();
                 find.Quantity++;
             }
             catch (Exception)
@@ -271,12 +275,13 @@ namespace GUI.StaffWorking
             this.calculateFoodPrice();
         }
 
-        private void NewSelectMenuItem(DAL.MenuItem menuItem, int quantity = 1, bool readOnly = false)
+        private void NewSelectMenuItem(DAL.MenuItem menuItem, int quantity = 1, DAL.OrderDetail orderDetail = null)
         {
-            SelectMenuItemControl selectMenuItem = new SelectMenuItemControl(menuItem, quantity, readOnly);
+            SelectMenuItemControl selectMenuItem = new SelectMenuItemControl(menuItem, quantity, orderDetail);
             selectMenuItem.Width = this.flowLayoutPanelRight.Width - 24;
             selectMenuItem.Height = (int)((double)selectMenuItem.Width / 3.6);
             selectMenuItem.OnDecrease += new SelectMenuItemControl.OnDecreaseHandle(this.SelectMenuItemControl_OnDecrease);
+            selectMenuItem.OnRemove += new SelectMenuItemControl.OnRemoveHandle(this.SelectMenuItemControl_OnRemove);
             this.flowLayoutPanelRight.Controls.Add(selectMenuItem);
         }
 
@@ -288,6 +293,19 @@ namespace GUI.StaffWorking
             }
         }
 
+        private void SelectMenuItemControl_OnRemove(SelectMenuItemControl sender)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to delete food '" + sender.MenuItem.Name + "'?", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                // remove food
+                OrderBLL orderBLL = new OrderBLL();
+                orderBLL.RemoveFood(this.order, sender.OrderDetail);
+                this.flowLayoutPanelRight.Controls.Remove(sender);
+                this.calculateFoodPrice();
+            }
+        }
+
         private void btnOrder_Click(object sender, EventArgs e)
         {
             List<OrderDetail> listOrderDetail = new List<OrderDetail>();
@@ -295,7 +313,7 @@ namespace GUI.StaffWorking
             List<SelectMenuItemControl> listControls = this.flowLayoutPanelRight.Controls.OfType<SelectMenuItemControl>().ToList();
             foreach(SelectMenuItemControl c in listControls)
             {
-                if (c.ReadOnly)
+                if (c.OrderDetail != null)
                     continue;
 
                 listOrderDetail.Add(new OrderDetail

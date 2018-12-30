@@ -16,6 +16,7 @@ namespace GUI
         public FeatureSelector()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
         }
 
         private void btnSystemSetup_Click(object sender, EventArgs e)
