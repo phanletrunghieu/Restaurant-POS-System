@@ -22,6 +22,7 @@ namespace GUI.StaffWorking
             set { this.tables = value; }
         }
         public List<DAL.Table> ListAvailableTables = new List<DAL.Table>();
+        public List<DAL.Table> ListOrderedTables = new List<DAL.Table>();
 
         public ChangeTable()
         {
@@ -39,6 +40,7 @@ namespace GUI.StaffWorking
         private void LoadData()
         {
             TableBLL tableBLL = new TableBLL();
+            this.ListOrderedTables = tableBLL.ListOrderedTables();
             this.ListAvailableTables = tableBLL.ListAvailableTables();
 
             foreach(DAL.Table table in this.Tables)
@@ -53,6 +55,17 @@ namespace GUI.StaffWorking
                 TableControl tableControl = new TableControl(table, false);
                 tableControl.MouseDown += new MouseEventHandler(this.tableControl1_MouseDown);
                 this.flowLayoutPanel2.Controls.Add(tableControl);
+            }
+
+            foreach (DAL.Table table in this.ListOrderedTables)
+            {
+                DAL.Table tt = this.Tables.Find(t => t.ID == table.ID);
+                if (tt != null)
+                    continue;
+
+                TableControl tableControl = new TableControl(table, false);
+                tableControl.MouseDown += new MouseEventHandler(this.tableControl1_MouseDown);
+                this.flowLayoutPanel3.Controls.Add(tableControl);
             }
         }
 
@@ -69,9 +82,45 @@ namespace GUI.StaffWorking
             e.Effect = DragDropEffects.Copy;
         }
 
+        private void flowLayoutPanel3_DragDrop(object sender, DragEventArgs e)
+        {
+            DAL.Table data = (DAL.Table)e.Data.GetData(DataFormats.Serializable);
+
+            // check table status is != 1
+            if (data.Status != 1)
+                return;
+
+            // check exist in layout 3
+            List<TableControl> layout3controls = this.flowLayoutPanel3.Controls.OfType<TableControl>().ToList();
+            var find = layout3controls.Find(t => t.Table.ID == data.ID);
+            if (find != null)
+                return;
+
+            // remove from layout 1
+            this.Tables.Remove(data);
+            List<TableControl> controls = this.flowLayoutPanel1.Controls.OfType<TableControl>().ToList();
+            for (int i = 0; i < controls.Count; i++)
+            {
+                if (controls[i].Table.ID == data.ID)
+                {
+                    this.flowLayoutPanel1.Controls.RemoveAt(i);
+                    break;
+                }
+            }
+
+            // add to layout 3
+            TableControl tableControl = new TableControl(data, false);
+            tableControl.MouseDown += new MouseEventHandler(this.tableControl1_MouseDown);
+            this.flowLayoutPanel3.Controls.Add(tableControl);
+        }
+
         private void flowLayoutPanel2_DragDrop(object sender, DragEventArgs e)
         {
             DAL.Table data = (DAL.Table)e.Data.GetData(DataFormats.Serializable);
+
+            // check table status is != 0
+            if (data.Status != 0)
+                return;
 
             // check exist in layout 2
             List<TableControl> layout2controls = this.flowLayoutPanel2.Controls.OfType<TableControl>().ToList();
@@ -106,14 +155,26 @@ namespace GUI.StaffWorking
             if (find != null)
                 return;
 
-            // remove from layout 2
             this.Tables.Add(data);
+
+            // remove from layout 2
             List<TableControl> controls = this.flowLayoutPanel2.Controls.OfType<TableControl>().ToList();
             for (int i = 0; i < controls.Count; i++)
             {
                 if (controls[i].Table.ID == data.ID)
                 {
                     this.flowLayoutPanel2.Controls.RemoveAt(i);
+                    break;
+                }
+            }
+
+            // remove from layout 3
+            controls = this.flowLayoutPanel3.Controls.OfType<TableControl>().ToList();
+            for (int i = 0; i < controls.Count; i++)
+            {
+                if (controls[i].Table.ID == data.ID)
+                {
+                    this.flowLayoutPanel3.Controls.RemoveAt(i);
                     break;
                 }
             }

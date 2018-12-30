@@ -20,6 +20,11 @@ namespace BLL
             return Connection.DBContext.Tables.Where(t => t.Status == 0).ToList();
         }
 
+        public List<Table> ListOrderedTables()
+        {
+            return Connection.DBContext.Tables.Where(t => t.Status == 1).ToList();
+        }
+
         public Table CreateTable(Table table)
         {
             Connection.DBContext.Tables.Add(table);

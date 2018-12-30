@@ -18,6 +18,7 @@ namespace GUI.SystemSetup.Menu
         public MenuSetup()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             this.LoadData();
         }
 

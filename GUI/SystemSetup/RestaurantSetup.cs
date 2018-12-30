@@ -18,6 +18,7 @@ namespace GUI
         public RestaurantSetup()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
         }
 
         private void btnSeat_Click(object sender, EventArgs e)

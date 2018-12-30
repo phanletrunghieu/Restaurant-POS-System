@@ -234,6 +234,7 @@
     <Compile Include="SystemSetup\Seat\TableEditDialog.Designer.cs">
       <DependentUpon>TableEditDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\UtilsForm.cs" />
     <Compile Include="Utilities\UtilsImage.cs" />
     <EmbeddedResource Include="Analytics.resx">
       <DependentUpon>Analytics.cs</DependentUpon>

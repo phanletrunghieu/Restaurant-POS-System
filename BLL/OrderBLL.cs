@@ -119,6 +119,12 @@ namespace BLL
             Connection.DBContext.SaveChanges();
         }
 
+        public void RemoveFood(Order order, DAL.OrderDetail orderDetail)
+        {
+            Connection.DBContext.OrderDetails.Remove(orderDetail);
+            Connection.DBContext.SaveChanges();
+        }
+
         public void AddVAT(Order order, decimal? vat)
         {
             order.VAT = vat;
@@ -139,15 +145,46 @@ namespace BLL
             order.OrderTables.Clear();
             foreach (Table table in tables)
             {
-                table.Status = 1;
-                Connection.DBContext.Tables.AddOrUpdate(table);
-                order.OrderTables.Add(
-                    new OrderTable
+                if(table.Status == 0)
+                {
+                    // available table
+                    table.Status = 1;
+                    Connection.DBContext.Tables.AddOrUpdate(table);
+                    order.OrderTables.Add(
+                        new OrderTable
+                        {
+                            OrderID = order.ID,
+                            TableID = table.ID
+                        }
+                    );
+                }
+
+                if(table.Status == 1)
+                {
+                    // remove table from old order
+                    Order oldOrder = GetCurrentOrderByTable(table);
+                    OrderTable orderTable = oldOrder.OrderTables.First(ot => ot.TableID == table.ID);
+                    if(orderTable != null)
                     {
-                        OrderID = order.ID,
-                        TableID = table.ID
+                        Connection.DBContext.OrderTables.Remove(orderTable);
                     }
-                );
+
+                    // add table to new order
+                    order.OrderTables.Add(
+                        new OrderTable
+                        {
+                            OrderID = order.ID,
+                            TableID = table.ID
+                        }
+                    );
+
+                    // move food
+                    foreach(OrderDetail od in oldOrder.OrderDetails)
+                    {
+                        order.OrderDetails.Add(od);
+                    }
+
+                }
             }
             Connection.DBContext.Orders.AddOrUpdate(order);
             Connection.DBContext.SaveChanges();
