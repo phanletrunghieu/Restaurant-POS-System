@@ -15,20 +15,6 @@ namespace GUI.Control
     {
         int hover;
 
-        private bool readOnly;
-        public bool ReadOnly
-        {
-            get { return readOnly; }
-            set
-            {
-                readOnly = value;
-                if (readOnly)
-                    this.btnDecrease.Hide();
-                else
-                    this.btnDecrease.Show();
-            }
-        }
-
         private DAL.MenuItem menuItem;
         public DAL.MenuItem MenuItem
         {
@@ -42,8 +28,31 @@ namespace GUI.Control
             }
         }
 
+        // use for ordered menuitem
+        private DAL.OrderDetail orderDetail;
+        public DAL.OrderDetail OrderDetail
+        {
+            get { return orderDetail; }
+            set
+            {
+                orderDetail = value;
+                if (orderDetail != null)
+                {
+                    this.btnDecrease.Hide();
+                    this.btnRemove.Show();
+                }
+                else
+                {
+                    this.btnDecrease.Show();
+                    this.btnRemove.Hide();
+                }
+            }
+        }
+
         public delegate void OnDecreaseHandle(SelectMenuItemControl sender);
+        public delegate void OnRemoveHandle(SelectMenuItemControl sender);
         public event OnDecreaseHandle OnDecrease;
+        public event OnRemoveHandle OnRemove;
 
         private int quantity;
         public int Quantity {
@@ -60,13 +69,13 @@ namespace GUI.Control
             InitializeComponent();
         }
 
-        public SelectMenuItemControl(DAL.MenuItem menuItem, int quantity, bool readOnly=false)
+        public SelectMenuItemControl(DAL.MenuItem menuItem, int quantity, DAL.OrderDetail orderDetail = null)
         {
             InitializeComponent();
             AddEvent();
             this.Quantity = quantity;
             this.MenuItem = menuItem;
-            this.ReadOnly = readOnly;
+            this.OrderDetail = orderDetail;
         }
 
         private void AddEvent()
@@ -103,6 +112,12 @@ namespace GUI.Control
 
             if (this.OnDecrease != null)
                 this.OnDecrease(this);
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (this.OnRemove != null)
+                this.OnRemove(this);
         }
     }
 }

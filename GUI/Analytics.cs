@@ -20,6 +20,7 @@ namespace GUI
         public Analytics()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             reports = new List<ReportType>();
             this.LoadData();
         }

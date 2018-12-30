@@ -20,6 +20,7 @@ namespace GUI.SystemSetup.Seat
         public SeatSetup()
         {
             InitializeComponent();
+            this.Text = Utilities.UtilsForm.GetFormTitle(this.Text);
             this.LoadData();
         }
 
