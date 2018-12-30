@@ -178,15 +178,14 @@ namespace UnitTest
             decimal moneyReceive = 199000;
             decimal moneyBalance = 0;
 
-            orderBLL.Pay(order, moneyReceive, moneyBalance);
+            order = orderBLL.Pay(order, moneyReceive, moneyBalance);
 
-            List<Area> areas = areaBLL.ListArea();
-            List<Table> allTables = tableBLL.ListTablesByArea(areas[0]);
-            Order currentOrder = orderBLL.GetCurrentOrderByTable(allTables[0]);
-
-            Assert.AreEqual(currentOrder.MoneyCharge, moneyBalance);
-            Assert.AreEqual(currentOrder.MoneyReceive, moneyReceive);
-            Assert.AreEqual(0, allTables[0].Status);
+            Assert.AreEqual(order.MoneyCharge, moneyBalance);
+            Assert.AreEqual(order.MoneyReceive, moneyReceive);
+            foreach (OrderTable ot in order.OrderTables)
+            {
+                Assert.AreEqual(0, ot.Table.Status);
+            }
         }
         [TestMethod]
         public void TestInputEmptyOrder()
