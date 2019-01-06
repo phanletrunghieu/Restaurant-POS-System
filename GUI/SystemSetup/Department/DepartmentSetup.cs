@@ -95,15 +95,18 @@ namespace GUI.SystemSetup.Department
 
                 // add button delete department
 
-                Button btDeleteDepartment = new Button();
-                btDeleteDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-                btDeleteDepartment.Location = new System.Drawing.Point(480, 55);
-                btDeleteDepartment.Size = new System.Drawing.Size(120, 20);
-                btDeleteDepartment.Tag = listDepartment[i];
-                btDeleteDepartment.Text = "Delete Department";
-                btDeleteDepartment.Click += new EventHandler(this.btDeleteDepartment_Click);
+                if(listDepartment[i].ID!=1 && listDepartment[i].ID != 2)
+                {
+                    Button btDeleteDepartment = new Button();
+                    btDeleteDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+                    btDeleteDepartment.Location = new System.Drawing.Point(480, 55);
+                    btDeleteDepartment.Size = new System.Drawing.Size(120, 20);
+                    btDeleteDepartment.Tag = listDepartment[i];
+                    btDeleteDepartment.Text = "Delete Department";
+                    btDeleteDepartment.Click += new EventHandler(this.btDeleteDepartment_Click);
 
-                t.Controls.Add(btDeleteDepartment);
+                    t.Controls.Add(btDeleteDepartment);
+                }
 
                 //get emloyees for department 
 
