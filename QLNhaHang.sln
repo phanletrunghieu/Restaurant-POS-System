@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{E418FE1A-523C-4B54-8E63-F7BDA93FC1B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{A88E19A0-EBEB-43A0-B513-FAB9CE96EADD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{E7EB34DA-F3FB-4EF4-A91C-AD3CD58A9C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{F4BEB606-BF1B-45D9-B0CF-96AF971A1551}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E7EB34DA-F3FB-4EF4-A91C-AD3CD58A9C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7EB34DA-F3FB-4EF4-A91C-AD3CD58A9C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7EB34DA-F3FB-4EF4-A91C-AD3CD58A9C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BEB606-BF1B-45D9-B0CF-96AF971A1551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BEB606-BF1B-45D9-B0CF-96AF971A1551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BEB606-BF1B-45D9-B0CF-96AF971A1551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BEB606-BF1B-45D9-B0CF-96AF971A1551}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
