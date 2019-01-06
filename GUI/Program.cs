@@ -21,8 +21,27 @@ namespace GUI
             DialogResult dr = loginForm.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                Application.Run(new FeatureSelector());
+                if (checkPermission())
+                {
+                    Application.Run(new FeatureSelector());
+                }
+                else
+                {
+                    Application.Run(new TablesStatus());
+                }
             }
+        }
+
+        private static bool checkPermission()
+        {
+            bool isManager = false;
+            foreach (DAL.EmployeeDepartment employeeDepartment in GlobalData.EMPLOYEE.EmployeeDepartments)
+            {
+                if (employeeDepartment.DepartmentID == 1)
+                    isManager = true;
+            }
+
+            return isManager;
         }
     }
 }
