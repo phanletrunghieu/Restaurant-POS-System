@@ -17,9 +17,13 @@ namespace BLL
 
         public Menu CreateMenu(string name)
         {
-            Menu menu = new Menu { Name = name };
-            Connection.DBContext.Menus.Add(menu);
-            Connection.DBContext.SaveChanges();
+            Menu menu = new Menu { Name = "" };
+            if (name != "" && name != null)
+            {
+                menu = new Menu { Name = name };
+                Connection.DBContext.Menus.Add(menu);
+                Connection.DBContext.SaveChanges();
+            }
             return menu;
         }
 

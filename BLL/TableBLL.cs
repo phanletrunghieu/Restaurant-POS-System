@@ -27,8 +27,11 @@ namespace BLL
 
         public Table CreateTable(Table table)
         {
-            Connection.DBContext.Tables.Add(table);
-            Connection.DBContext.SaveChanges();
+            if (table.Name!=null && table.Name != "")
+            {
+                Connection.DBContext.Tables.Add(table);
+                Connection.DBContext.SaveChanges();
+            }
             return table;
         }
 

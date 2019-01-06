@@ -17,8 +17,23 @@ namespace BLL
 
         public MenuItem CreateMenuItem(MenuItem menuItem)
         {
-            Connection.DBContext.MenuItems.Add(menuItem);
-            Connection.DBContext.SaveChanges();
+            if (menuItem.MenuID != null)
+            {
+                if (menuItem.Name != null && menuItem.Name !="")
+                {
+                    if (menuItem.Price != null && menuItem.Price != 0)
+                    {
+                        if (menuItem.PriceAfter != null && menuItem.PriceAfter != 0)
+                        {
+                            if (menuItem.Image != null)
+                            {
+                                Connection.DBContext.MenuItems.Add(menuItem);
+                                Connection.DBContext.SaveChanges();
+                            }
+                        }
+                    }
+                }
+            }
             return menuItem;
         }
 

@@ -26,30 +26,53 @@ namespace BLL
                 if (od.Price != null)
                     priceBefore += (decimal)od.Price * (int)od.Quantity;
             }
-
             Order order = new Order
             {
-                CustomerName = customerName,
-                EmployeeID = employee.ID,
-                OrderTables = orderTables,
-                OrderDetails = listOrderDetail,
+                CustomerName = "",
+                EmployeeID = null,
+                OrderTables = null,
+                OrderDetails = null,
                 DateCreated = DateTime.Now,
-                PriceBefore = priceBefore,
-                PriceAfter = priceBefore,
+                PriceBefore = 0,
+                PriceAfter = 0,
             };
-            Connection.DBContext.Orders.Add(order);
-            Connection.DBContext.SaveChanges();
-            order.InvoiceNo = order.ID.ToString("D5");
-            Connection.DBContext.SaveChanges();
-
-            //update table
-            foreach (Table table in tables)
+            if (customerName!= null && customerName != "")
             {
-                table.Status = 1;
-                Connection.DBContext.Tables.AddOrUpdate(table);
-            }
-            Connection.DBContext.SaveChanges();
+                if (employee.ID != null)
+                {
+                    if (orderTables != null)
+                    {
+                        if (listOrderDetail != null)
+                        {
+                            if (priceBefore != null && priceBefore != 0)
+                            {
+                                order = new Order
+                                {
+                                    CustomerName = customerName,
+                                    EmployeeID = employee.ID,
+                                    OrderTables = orderTables,
+                                    OrderDetails = listOrderDetail,
+                                    DateCreated = DateTime.Now,
+                                    PriceBefore = priceBefore,
+                                    PriceAfter = priceBefore,
+                                };
+                                Connection.DBContext.Orders.Add(order);
+                                Connection.DBContext.SaveChanges();
+                                order.InvoiceNo = order.ID.ToString("D5");
+                                Connection.DBContext.SaveChanges();
 
+                                //update table
+                                foreach (Table table in tables)
+                                {
+                                    table.Status = 1;
+                                    Connection.DBContext.Tables.AddOrUpdate(table);
+                                }
+                                Connection.DBContext.SaveChanges();
+                            }
+                        }
+                    }
+                }
+            }
             return order;
         }
 
