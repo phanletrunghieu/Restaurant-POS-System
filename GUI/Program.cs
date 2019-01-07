@@ -1,6 +1,7 @@
 ﻿using GUI.StaffWorking;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,10 @@ namespace GUI
         [STAThread]
         static void Main()
         {
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string absolute = Path.GetFullPath(baseDirectory);
+            AppDomain.CurrentDomain.SetData("DataDirectory", absolute);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Login loginForm = new Login();
