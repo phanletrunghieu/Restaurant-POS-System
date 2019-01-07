@@ -316,6 +316,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SystemSetup\RestaurantSetup.resx">
       <DependentUpon>RestaurantSetup.cs</DependentUpon>
