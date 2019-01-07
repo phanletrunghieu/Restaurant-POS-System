@@ -37,8 +37,13 @@ namespace GUI.SystemSetup.Menu
         {
             if(this.MenuItem == null)
             {
-                string rootPath = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-                this.pictureBox.Image = Utilities.UtilsImage.ByteArrayToImage(File.ReadAllBytes(rootPath + "/data/images/placeholder.png"));
+                string relativePath = "/data/images/placeholder.png";
+                string rootPath = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).FullName;
+                if (!File.Exists(rootPath + relativePath))
+                {
+                    rootPath = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+                }
+                this.pictureBox.Image = Utilities.UtilsImage.ByteArrayToImage(File.ReadAllBytes(rootPath + relativePath));
             } else
             {
                 this.txtName.Text = this.MenuItem.Name;
