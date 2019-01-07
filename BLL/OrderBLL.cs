@@ -180,9 +180,7 @@ namespace BLL
                             TableID = table.ID
                         }
                     );
-                }
-
-                if(table.Status == 1)
+                } else if(table.Status == 1)
                 {
                     // remove table from old order
                     Order oldOrder = GetCurrentOrderByTable(table);
