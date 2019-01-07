@@ -12,11 +12,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string relative = @"..\..\";
-            string absolute = Path.GetFullPath(Path.Combine(baseDirectory, relative));
-            AppDomain.CurrentDomain.SetData("DataDirectory", absolute);
         }
 
         protected override void Seed(DAL.MyDBContext context)
@@ -33,6 +28,11 @@
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string relative = @"..\..\";
+            string absolute = Path.GetFullPath(Path.Combine(baseDirectory, relative));
+            AppDomain.CurrentDomain.SetData("DataDirectory", absolute);
 
             context.Areas.AddOrUpdate(
                 new Area { ID = 1, Name = "Tầng 1" },
