@@ -1,3 +1,4 @@
+
 # Restaurant Management
 
 ## Migrate Database
@@ -14,9 +15,18 @@ Admin
 	Username: admin
 	Password: admin
 
-
 Normal user
-
 
 	Username: user
 	Password: user
+## Main feature
+- Manage areas/tables
+- Manage menus
+- Manage employees
+- Create order (food, discount, vat, extra)
+- Cancel food
+- Change order's table
+- Merge tables
+- Print bill
+- Analytics
+- Export to excel file
